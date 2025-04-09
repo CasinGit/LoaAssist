@@ -1,0 +1,53 @@
+{
+    "$schema": "https://schema.tauri.app/config/2",
+    "productName": "LoaAssist",
+    "identifier": "com.loaassist.app",
+    "build": {
+        "beforeBuildCommand": "npm run build",
+        "beforeDevCommand": "npm run dev",
+        "devUrl": "http://localhost:1420",
+        "frontendDist": "../build"
+    },
+    "app": {
+        "windows": [
+            {
+                "label": "main",
+                "title": "Lost Ark Assist",
+                "width": 320,
+                "height": 500,
+                "alwaysOnTop": true,
+                "visible": true,
+                "resizable": false,
+                "fullscreen": false,
+                "transparent": true,
+                "shadow": false,
+                "decorations": false,
+                "dragDropEnabled": true
+            },
+            {
+                "label": "update",
+                "title": "LoAssist Updater",
+                "url": "update",
+                "width": 500,
+                "height": 500,
+                "alwaysOnTop": true,
+                "visible": true,
+                "resizable": false,
+                "fullscreen": false,
+                "transparent": true,
+                "shadow": false,
+                "decorations": true,
+                "dragDropEnabled": true,
+                "create": false
+            }
+        ],
+        "security": {
+            "csp": null
+        }
+    },
+    "bundle": {
+        "active": false,
+        "targets": "all",
+        "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"]
+    }
+}
