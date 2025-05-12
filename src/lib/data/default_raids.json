@@ -1,0 +1,596 @@
+[
+    {
+        "raidId": 1,
+        "level": 1415,
+        "raidName": "발탄",
+        "difficulty": "노말",
+        "gate": "1",
+        "reward": 500,
+        "resetType": 1
+    },
+    {
+        "raidId": 2,
+        "level": 1415,
+        "raidName": "발탄",
+        "difficulty": "노말",
+        "gate": "2",
+        "reward": 700,
+        "resetType": 1
+    },
+    {
+        "raidId": 3,
+        "level": 1445,
+        "raidName": "발탄",
+        "difficulty": "하드",
+        "gate": "1",
+        "reward": 700,
+        "resetType": 1
+    },
+    {
+        "raidId": 4,
+        "level": 1445,
+        "raidName": "발탄",
+        "difficulty": "하드",
+        "gate": "2",
+        "reward": 1100,
+        "resetType": 1
+    },
+    {
+        "raidId": 5,
+        "level": 1430,
+        "raidName": "비아키스",
+        "difficulty": "노말",
+        "gate": "1",
+        "reward": 600,
+        "resetType": 1
+    },
+    {
+        "raidId": 6,
+        "level": 1430,
+        "raidName": "비아키스",
+        "difficulty": "노말",
+        "gate": "2",
+        "reward": 1000,
+        "resetType": 1
+    },
+    {
+        "raidId": 7,
+        "level": 1460,
+        "raidName": "비아키스",
+        "difficulty": "하드",
+        "gate": "1",
+        "reward": 900,
+        "resetType": 1
+    },
+    {
+        "raidId": 8,
+        "level": 1460,
+        "raidName": "비아키스",
+        "difficulty": "하드",
+        "gate": "2",
+        "reward": 1500,
+        "resetType": 1
+    },
+    {
+        "raidId": 9,
+        "level": 1475,
+        "raidName": "쿠크세이튼",
+        "difficulty": "노말",
+        "gate": "1",
+        "reward": 600,
+        "resetType": 1
+    },
+    {
+        "raidId": 10,
+        "level": 1475,
+        "raidName": "쿠크세이튼",
+        "difficulty": "노말",
+        "gate": "2",
+        "reward": 900,
+        "resetType": 1
+    },
+    {
+        "raidId": 11,
+        "level": 1475,
+        "raidName": "쿠크세이튼",
+        "difficulty": "노말",
+        "gate": "3",
+        "reward": 1500,
+        "resetType": 1
+    },
+    {
+        "raidId": 12,
+        "level": 1490,
+        "raidName": "아브렐슈드",
+        "difficulty": "노말",
+        "gate": "1",
+        "reward": 1000,
+        "resetType": 1
+    },
+    {
+        "raidId": 13,
+        "level": 1490,
+        "raidName": "아브렐슈드",
+        "difficulty": "노말",
+        "gate": "2",
+        "reward": 1000,
+        "resetType": 1
+    },
+    {
+        "raidId": 14,
+        "level": 1500,
+        "raidName": "아브렐슈드",
+        "difficulty": "노말",
+        "gate": "3",
+        "reward": 1000,
+        "resetType": 1
+    },
+    {
+        "raidId": 15,
+        "level": 1520,
+        "raidName": "아브렐슈드",
+        "difficulty": "노말",
+        "gate": "4",
+        "reward": 1600,
+        "resetType": 2
+    },
+    {
+        "raidId": 16,
+        "level": 1540,
+        "raidName": "아브렐슈드",
+        "difficulty": "하드",
+        "gate": "1",
+        "reward": 1200,
+        "resetType": 1
+    },
+    {
+        "raidId": 17,
+        "level": 1540,
+        "raidName": "아브렐슈드",
+        "difficulty": "하드",
+        "gate": "2",
+        "reward": 1200,
+        "resetType": 1
+    },
+    {
+        "raidId": 18,
+        "level": 1550,
+        "raidName": "아브렐슈드",
+        "difficulty": "하드",
+        "gate": "3",
+        "reward": 1200,
+        "resetType": 1
+    },
+    {
+        "raidId": 19,
+        "level": 1560,
+        "raidName": "아브렐슈드",
+        "difficulty": "하드",
+        "gate": "4",
+        "reward": 2000,
+        "resetType": 2
+    },
+    {
+        "raidId": 20,
+        "level": 1580,
+        "raidName": "일리아칸",
+        "difficulty": "노말",
+        "gate": "1",
+        "reward": 1000,
+        "resetType": 1
+    },
+    {
+        "raidId": 21,
+        "level": 1580,
+        "raidName": "일리아칸",
+        "difficulty": "노말",
+        "gate": "2",
+        "reward": 1800,
+        "resetType": 1
+    },
+    {
+        "raidId": 22,
+        "level": 1580,
+        "raidName": "일리아칸",
+        "difficulty": "노말",
+        "gate": "3",
+        "reward": 2600,
+        "resetType": 1
+    },
+    {
+        "raidId": 23,
+        "level": 1600,
+        "raidName": "일리아칸",
+        "difficulty": "하드",
+        "gate": "1",
+        "reward": 1500,
+        "resetType": 1
+    },
+    {
+        "raidId": 24,
+        "level": 1600,
+        "raidName": "일리아칸",
+        "difficulty": "하드",
+        "gate": "2",
+        "reward": 2500,
+        "resetType": 1
+    },
+    {
+        "raidId": 25,
+        "level": 1600,
+        "raidName": "일리아칸",
+        "difficulty": "하드",
+        "gate": "3",
+        "reward": 3500,
+        "resetType": 1
+    },
+    {
+        "raidId": 26,
+        "level": 1610,
+        "raidName": "카멘",
+        "difficulty": "노말",
+        "gate": "1",
+        "reward": 2000,
+        "resetType": 1
+    },
+    {
+        "raidId": 27,
+        "level": 1610,
+        "raidName": "카멘",
+        "difficulty": "노말",
+        "gate": "2",
+        "reward": 2500,
+        "resetType": 1
+    },
+    {
+        "raidId": 28,
+        "level": 1610,
+        "raidName": "카멘",
+        "difficulty": "노말",
+        "gate": "3",
+        "reward": 3500,
+        "resetType": 1
+    },
+    {
+        "raidId": 29,
+        "level": 1630,
+        "raidName": "카멘",
+        "difficulty": "하드",
+        "gate": "1",
+        "reward": 2000,
+        "resetType": 1
+    },
+    {
+        "raidId": 30,
+        "level": 1630,
+        "raidName": "카멘",
+        "difficulty": "하드",
+        "gate": "2",
+        "reward": 3000,
+        "resetType": 1
+    },
+    {
+        "raidId": 31,
+        "level": 1630,
+        "raidName": "카멘",
+        "difficulty": "하드",
+        "gate": "3",
+        "reward": 5000,
+        "resetType": 1
+    },
+    {
+        "raidId": 32,
+        "level": 1630,
+        "raidName": "카멘",
+        "difficulty": "하드",
+        "gate": "4",
+        "reward": 5500,
+        "resetType": 2
+    },
+    {
+        "raidId": 33,
+        "level": 1540,
+        "raidName": "카양겔",
+        "difficulty": "노말",
+        "gate": "1",
+        "reward": 800,
+        "resetType": 1
+    },
+    {
+        "raidId": 34,
+        "level": 1540,
+        "raidName": "카양겔",
+        "difficulty": "노말",
+        "gate": "2",
+        "reward": 1200,
+        "resetType": 1
+    },
+    {
+        "raidId": 35,
+        "level": 1540,
+        "raidName": "카양겔",
+        "difficulty": "노말",
+        "gate": "3",
+        "reward": 1600,
+        "resetType": 1
+    },
+    {
+        "raidId": 36,
+        "level": 1580,
+        "raidName": "카양겔",
+        "difficulty": "하드",
+        "gate": "1",
+        "reward": 1000,
+        "resetType": 1
+    },
+    {
+        "raidId": 37,
+        "level": 1580,
+        "raidName": "카양겔",
+        "difficulty": "하드",
+        "gate": "2",
+        "reward": 1600,
+        "resetType": 1
+    },
+    {
+        "raidId": 38,
+        "level": 1580,
+        "raidName": "카양겔",
+        "difficulty": "하드",
+        "gate": "3",
+        "reward": 2200,
+        "resetType": 1
+    },
+    {
+        "raidId": 39,
+        "level": 1600,
+        "raidName": "상아탑",
+        "difficulty": "노말",
+        "gate": "1",
+        "reward": 1500,
+        "resetType": 1
+    },
+    {
+        "raidId": 40,
+        "level": 1600,
+        "raidName": "상아탑",
+        "difficulty": "노말",
+        "gate": "2",
+        "reward": 2000,
+        "resetType": 1
+    },
+    {
+        "raidId": 41,
+        "level": 1600,
+        "raidName": "상아탑",
+        "difficulty": "노말",
+        "gate": "3",
+        "reward": 3000,
+        "resetType": 1
+    },
+    {
+        "raidId": 42,
+        "level": 1620,
+        "raidName": "상아탑",
+        "difficulty": "하드",
+        "gate": "1",
+        "reward": 1750,
+        "resetType": 1
+    },
+    {
+        "raidId": 43,
+        "level": 1620,
+        "raidName": "상아탑",
+        "difficulty": "하드",
+        "gate": "2",
+        "reward": 2500,
+        "resetType": 1
+    },
+    {
+        "raidId": 44,
+        "level": 1620,
+        "raidName": "상아탑",
+        "difficulty": "하드",
+        "gate": "3",
+        "reward": 4750,
+        "resetType": 1
+    },
+    {
+        "raidId": 45,
+        "level": 1620,
+        "raidName": "[서막] 에키드나",
+        "difficulty": "노말",
+        "gate": "1",
+        "reward": 3000,
+        "resetType": 1
+    },
+    {
+        "raidId": 46,
+        "level": 1620,
+        "raidName": "[서막] 에키드나",
+        "difficulty": "노말",
+        "gate": "2",
+        "reward": 6500,
+        "resetType": 1
+    },
+    {
+        "raidId": 47,
+        "level": 1640,
+        "raidName": "[서막] 에키드나",
+        "difficulty": "하드",
+        "gate": "1",
+        "reward": 3500,
+        "resetType": 1
+    },
+    {
+        "raidId": 48,
+        "level": 1640,
+        "raidName": "[서막] 에키드나",
+        "difficulty": "하드",
+        "gate": "2",
+        "reward": 7500,
+        "resetType": 1
+    },
+    {
+        "raidId": 49,
+        "level": 1660,
+        "raidName": "[1막] 에기르",
+        "difficulty": "노말",
+        "gate": "1",
+        "reward": 5500,
+        "resetType": 1
+    },
+    {
+        "raidId": 50,
+        "level": 1660,
+        "raidName": "[1막] 에기르",
+        "difficulty": "노말",
+        "gate": "2",
+        "reward": 12500,
+        "resetType": 1
+    },
+    {
+        "raidId": 51,
+        "level": 1680,
+        "raidName": "[1막] 에기르",
+        "difficulty": "하드",
+        "gate": "1",
+        "reward": 9000,
+        "resetType": 1
+    },
+    {
+        "raidId": 52,
+        "level": 1680,
+        "raidName": "[1막] 에기르",
+        "difficulty": "하드",
+        "gate": "2",
+        "reward": 18500,
+        "resetType": 1
+    },
+    {
+        "raidId": 53,
+        "level": 1670,
+        "raidName": "[2막] 아브렐슈드",
+        "difficulty": "노말",
+        "gate": "1",
+        "reward": 8500,
+        "resetType": 1
+    },
+    {
+        "raidId": 54,
+        "level": 1670,
+        "raidName": "[2막] 아브렐슈드",
+        "difficulty": "노말",
+        "gate": "2",
+        "reward": 16500,
+        "resetType": 1
+    },
+    {
+        "raidId": 55,
+        "level": 1690,
+        "raidName": "[2막] 아브렐슈드",
+        "difficulty": "하드",
+        "gate": "1",
+        "reward": 10000,
+        "resetType": 1
+    },
+    {
+        "raidId": 56,
+        "level": 1690,
+        "raidName": "[2막] 아브렐슈드",
+        "difficulty": "하드",
+        "gate": "2",
+        "reward": 20500,
+        "resetType": 1
+    },
+    {
+        "raidId": 57,
+        "level": 1640,
+        "raidName": "베히모스",
+        "difficulty": "노말",
+        "gate": "1",
+        "reward": 3500,
+        "resetType": 1
+    },
+    {
+        "raidId": 58,
+        "level": 1640,
+        "raidName": "베히모스",
+        "difficulty": "노말",
+        "gate": "2",
+        "reward": 7500,
+        "resetType": 1
+    },
+    {
+        "raidId": 59,
+        "level": 1680,
+        "raidName": "[3막] 모르둠",
+        "difficulty": "노말",
+        "gate": "1",
+        "reward": 6000,
+        "resetType": 1
+    },
+    {
+        "raidId": 60,
+        "level": 1680,
+        "raidName": "[3막] 모르둠",
+        "difficulty": "노말",
+        "gate": "2",
+        "reward": 9500,
+        "resetType": 1
+    },
+    {
+        "raidId": 61,
+        "level": 1680,
+        "raidName": "[3막] 모르둠",
+        "difficulty": "노말",
+        "gate": "3",
+        "reward": 12500,
+        "resetType": 1
+    },
+    {
+        "raidId": 62,
+        "level": 1700,
+        "raidName": "[3막] 모르둠",
+        "difficulty": "하드",
+        "gate": "1",
+        "reward": 7000,
+        "resetType": 1
+    },
+    {
+        "raidId": 63,
+        "level": 1700,
+        "raidName": "[3막] 모르둠",
+        "difficulty": "하드",
+        "gate": "2",
+        "reward": 11000,
+        "resetType": 1
+    },
+    {
+        "raidId": 64,
+        "level": 1700,
+        "raidName": "[3막] 모르둠",
+        "difficulty": "하드",
+        "gate": "3",
+        "reward": 20000,
+        "resetType": 1
+    },
+    {
+        "raidId": 1000,
+        "level": 1680,
+        "raidName": "[강습] 타르칼",
+        "difficulty": "노말",
+        "gate": "1",
+        "reward": 10000,
+        "resetType": 1
+    },
+    {
+        "raidId": 1001,
+        "level": 1720,
+        "raidName": "[강습] 타르칼",
+        "difficulty": "하드",
+        "gate": "1",
+        "reward": 18000,
+        "resetType": 1
+    }
+]

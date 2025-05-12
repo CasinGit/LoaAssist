@@ -1,0 +1,15 @@
+[
+    { "name": "🐞 버그", "color": "d73a4a", "description": "프로그램 오류 및 버그 보고" },
+    { "name": "✨ 기능 추가", "color": "a2eeef", "description": "새로운 기능 추가 요청" },
+    { "name": "🛠 개선", "color": "8b72b5", "description": "기존 기능 개선 및 수정" },
+    { "name": "📖 문서", "color": "0075ca", "description": "문서화 및 README 업데이트" },
+    { "name": "🎨 디자인", "color": "ffcc00", "description": "UI/UX 디자인 관련 수정" },
+    { "name": "🚀 성능 개선", "color": "ff69b4", "description": "속도 및 최적화 관련 수정" },
+    { "name": "⚙️ 빌드", "color": "cfd3d7", "description": "빌드 시스템, CI/CD 수정" },
+    { "name": "🔥 긴급", "color": "b60205", "description": "빠르게 해결해야 할 중요 문제" },
+    { "name": "❓ 문의", "color": "d876e3", "description": "질문 및 논의가 필요한 사항" },
+    { "name": "🏷 중복", "color": "cccccc", "description": "중복된 이슈 또는 PR" },
+    { "name": "⏳ 보류", "color": "ffffff", "description": "현재 진행하지 않는 작업" },
+    { "name": "🚧 진행 중", "color": "ff9800", "description": "개발 또는 수정 중인 항목" },
+    { "name": "✅ 완료", "color": "0e8a16", "description": "작업이 완료된 항목" }
+]

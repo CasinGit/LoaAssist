@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    color: white;
+}
+
+body {
+    overflow: hidden;
+    /* 기본적으로 모든 페이지에서 드래그 방지 */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.remove-btn:hover path {
+    stroke: black;
+}
+
+.text-shadow {
+    text-shadow:
+        -1px 0px black,
+        0px 1px black,
+        1px 0px black,
+        0px -1px black;
+}
+.text-shadow-w {
+    text-shadow:
+        -1px 0px white,
+        0px 1px white,
+        1px 0px white,
+        0px -1px white;
+}
+
+/* > Scrollbar Design */
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+/* > Scrollbar Design */

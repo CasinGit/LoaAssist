@@ -1,0 +1,3 @@
+[submodule "bootstrapper"]
+	path = bootstrapper
+	url = https://github.com/CasinGit/LoaAssist-Bootstrapper
