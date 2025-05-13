@@ -1,0 +1,93 @@
+name: "\U0001F41E Bug Report"
+description: 버그를 발견하면 여기에 제보하세요.
+title: "[Bug] "
+labels: [🐞 버그]
+assignees:
+    - CasinGit
+body:
+    - type: markdown
+      attributes:
+          value: |
+              감사합니다! 버그 제보를 통해 프로젝트 개선에 도움을 주셔서 감사합니다.
+              아래 항목을 가능한 한 구체적으로 작성해주세요.
+
+    - type: textarea
+      id: problem-description
+      attributes:
+          label: 🐞 문제 설명
+          description: 어떤 문제가 발생했는지 간단히 설명해주세요.
+          placeholder: ex. 특정 버튼을 누르면 앱이 종료됩니다.
+      validations:
+          required: true
+
+    - type: textarea
+      id: reproduction-steps
+      attributes:
+          label: 🔁 재현 방법
+          description: 버그가 발생하는 절차를 자세히 작성해주세요.
+          placeholder: |
+              1. 앱을 실행합니다.
+              2. 설정 페이지로 이동합니다.
+              3. 특정 옵션을 클릭합니다.
+              4. 오류 발생.
+      validations:
+          required: true
+
+    - type: textarea
+      id: expected-behavior
+      attributes:
+          label: ✅ 예상 동작
+          description: 정상적으로 동작할 경우 어떤 결과가 나와야 하나요?
+          placeholder: ex. 클릭 시 설정이 저장되고 페이지가 닫혀야 합니다.
+      validations:
+          required: false
+
+    - type: input
+      id: environment-os
+      attributes:
+          label: 🖥️ OS 정보
+          description: 어떤 운영체제에서 문제가 발생했나요?
+          placeholder: ex. Windows 11, macOS 14
+      validations:
+          required: true
+
+    - type: input
+      id: environment-browser
+      attributes:
+          label: 🌐 브라우저 정보
+          description: 브라우저 또는 실행 환경 정보를 작성해주세요.
+          placeholder: ex. Chrome 136.0.7103.93, Tauri 2.0
+      validations:
+          required: false
+
+    - type: input
+      id: app-version
+      attributes:
+          label: 🧩 앱 버전
+          description: 문제가 발생한 버전을 작성해주세요.
+          placeholder: ex. v1.1.2
+      validations:
+          required: true
+
+    - type: textarea
+      id: extra-info
+      attributes:
+          label: 📎 기타 정보
+          description: 추가로 공유할 정보가 있다면 자유롭게 작성해주세요.
+          placeholder: 스크린샷, 로그, 관련 이슈 링크 등
+      validations:
+          required: false
+
+    - type: dropdown
+      id: priority
+      attributes:
+          label: ⏱ 우선순위
+          description: 이 요청의 우선순위는 어느 정도인가요?
+          options:
+              - 낮음 (Low)
+              - 보통 (Medium)
+              - 높음 (High)
+              - 매우 높음 (Critical)
+          default: 1
+      validations:
+          required: true

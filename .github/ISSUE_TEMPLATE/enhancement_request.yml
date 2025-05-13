@@ -1,0 +1,61 @@
+name: "🛠️ Enhancement Request"
+description: 기존 기능을 개선하거나 최적화하고 싶다면 작성해주세요.
+title: "[Enhancement] "
+labels: [🛠 개선]
+assignees:
+    - CasinGit
+body:
+    - type: markdown
+      attributes:
+          value: |
+              기존 기능의 개선 또는 최적화를 제안해주셔서 감사합니다. 아래 항목을 구체적으로 작성해주세요.
+
+    - type: textarea
+      id: current-behavior
+      attributes:
+          label: 📌 현재 동작
+          description: 현재 기능이 어떻게 동작하고 있는지 설명해주세요.
+          placeholder: ex. 캐릭터 리스트가 매번 전체 초기화되어 다시 입력해야 합니다.
+      validations:
+          required: true
+
+    - type: textarea
+      id: proposed-enhancement
+      attributes:
+          label: ✨ 제안하는 개선 사항
+          description: 어떤 방식으로 개선되었으면 좋겠는지 설명해주세요.
+          placeholder: ex. 입력한 캐릭터 정보가 저장되고 다음에도 자동으로 불러와지면 좋겠습니다.
+      validations:
+          required: true
+
+    - type: textarea
+      id: expected-benefits
+      attributes:
+          label: ✅ 기대 효과
+          description: 개선이 이루어지면 어떤 장점이 생기나요?
+          placeholder: ex. 사용자 경험이 향상되고, 반복 입력의 번거로움이 줄어듭니다.
+      validations:
+          required: false
+
+    - type: textarea
+      id: related-context
+      attributes:
+          label: 🔍 관련 정보
+          description: 참고할 수 있는 정보나 참고 링크가 있다면 작성해주세요.
+          placeholder: ex. 유사 앱의 구현 사례, 디자인 시안 등
+      validations:
+          required: false
+
+    - type: dropdown
+      id: priority
+      attributes:
+          label: ⏱ 우선순위
+          description: 이 개선 요청의 우선순위는 어느 정도인가요?
+          options:
+              - 낮음 (Low)
+              - 보통 (Medium)
+              - 높음 (High)
+              - 매우 높음 (Critical)
+          default: 1
+      validations:
+          required: true

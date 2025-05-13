@@ -1,0 +1,47 @@
+name: "✨ Feature Request"
+description: 새로운 기능을 제안하고 싶다면 작성해주세요.
+title: "[Feature] "
+labels: [✨ 기능 추가]
+assignees:
+    - CasinGit
+body:
+    - type: markdown
+      attributes:
+          value: |
+              기능 제안을 남겨주셔서 감사합니다. 아래 항목을 구체적으로 작성해주세요.
+
+    - type: textarea
+      id: feature-description
+      attributes:
+          label: 📝 기능 설명
+          description: 어떤 기능을 추가하고 싶은지 상세하게 설명해주세요.
+          placeholder: ex. 체크리스트에 캐릭터 이름 자동완성 기능을 추가하고 싶습니다.
+      validations:
+          required: true
+
+    - type: textarea
+      id: feature-reason
+      attributes:
+          label: 📌 필요한 이유
+          description: 이 기능이 왜 필요한지 설명해주세요.
+          placeholder: ex. 현재 캐릭터 이름을 매번 직접 입력해야 해서 번거롭습니다.
+      validations:
+          required: true
+
+    - type: textarea
+      id: alternative-methods
+      attributes:
+          label: 🔄 대체 방법
+          description: 비슷한 기능을 제공하는 다른 방법이 있다면 알려주세요.
+          placeholder: ex. 외부 확장 기능을 사용해 캐릭터 이름을 복사해서 붙여넣고 있습니다.
+      validations:
+          required: false
+
+    - type: textarea
+      id: additional-info
+      attributes:
+          label: 📎 기타 정보
+          description: 추가로 공유할 내용이 있다면 작성해주세요.
+          placeholder: ex. 관련 스크린샷, 참고 링크 등
+      validations:
+          required: false

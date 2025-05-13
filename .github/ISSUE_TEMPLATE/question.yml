@@ -1,0 +1,29 @@
+name: "❓ Question"
+description: 궁금한 점이 있다면 여기에 작성하세요.
+title: "[Question] "
+labels: [❓ 문의]
+assignees:
+    - CasinGit
+body:
+    - type: markdown
+      attributes:
+          value: |
+              질문을 남겨주셔서 감사합니다. 아래 항목을 가능한 한 자세히 작성해 주세요.
+
+    - type: textarea
+      id: question-content
+      attributes:
+          label: 🙋 질문 내용
+          description: 어떤 점이 궁금한가요? 가능한 자세히 작성해주세요.
+          placeholder: ex. 이 기능은 어떤 동작을 하나요? 또는 A와 B 중 어떤 방법이 더 적합한가요?
+      validations:
+          required: true
+
+    - type: textarea
+      id: related-info
+      attributes:
+          label: 🔗 관련 정보
+          description: 관련 문서, 링크, 코드 등 추가 정보가 있다면 함께 작성해주세요.
+          placeholder: 관련 문서, GitHub 이슈, StackOverflow 링크 등
+      validations:
+          required: false
