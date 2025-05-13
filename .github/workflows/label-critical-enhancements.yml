@@ -1,0 +1,48 @@
+name: "Label or Remove Critical Tag"
+
+on:
+    issues:
+        types: [opened, edited]
+
+jobs:
+    manage-critical-label:
+        runs-on: ubuntu-latest
+        permissions:
+            issues: write # 라벨 추가/삭제를 위해 필요
+        steps:
+            - name: Add or remove '🚨 긴급' label based on priority
+              uses: actions/github-script@v7
+              with:
+                  script: |
+                      const issue_number = context.issue.number;
+                      const owner = context.repo.owner;
+                      const repo = context.repo.repo;
+                      const labels = (await github.rest.issues.listLabelsOnIssue({
+                        owner,
+                        repo,
+                        issue_number
+                      })).data.map(label => label.name);
+
+                      const body = context.payload.issue.body || "";
+                      const hasCritical = body.includes("매우 높음 (Critical)");
+                      const hasUrgentLabel = labels.includes("🚨 긴급");
+
+                      if (hasCritical && !hasUrgentLabel) {
+                        await github.rest.issues.addLabels({
+                          owner,
+                          repo,
+                          issue_number,
+                          labels: ["🚨 긴급"]
+                        });
+                        console.log("✅ '🚨 긴급' 라벨 추가됨");
+                      } else if (!hasCritical && hasUrgentLabel) {
+                        await github.rest.issues.removeLabel({
+                          owner,
+                          repo,
+                          issue_number,
+                          name: "🚨 긴급"
+                        });
+                        console.log("🗑️ '🚨 긴급' 라벨 제거됨");
+                      } else {
+                        console.log("🔍 변경 없음");
+                      }
