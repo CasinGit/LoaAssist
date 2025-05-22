@@ -68,7 +68,7 @@
             await db.close();
         }
 
-        console.log(remainingRaidsTable);
+        // console.log(remainingRaidsTable);
     }
 
     function handleExpansion() {
@@ -107,7 +107,9 @@
                     style="width: {((totalRaids - remainingRaids) / totalRaids) * 100}%"
                 ></div>
                 <div class="absolute text-[3.5vw] font-normal mix-blend-difference" style="position-area: top;">
-                    {Number(((totalRaids - remainingRaids) / totalRaids) * 100).toFixed(2)}%
+                    {!isNaN((totalRaids - remainingRaids) / totalRaids)
+                        ? Number(((totalRaids - remainingRaids) / totalRaids) * 100).toFixed(2)
+                        : 0}%
                 </div>
             </div>
         </div>
