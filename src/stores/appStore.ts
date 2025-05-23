@@ -55,35 +55,39 @@ const initialState: AppState = {
 export const appStore = writable<AppState>(initialState);
 
 // + Optional: Create helper functions for updating state
-export const loadLiveDB = async () => {
+export const loadLiveDB = async (skip?: boolean) => {
     console.log(
         "%cReload Live DB",
         "color:white; font-style:bold; background-color:limeGreen; padding:3px; border-radius:4px; font-size:12px;"
     );
 
-    await initializerDB(); // * DataBase Initializer
+    if (!skip) await initializerDB(); // * DataBase Initializer
 
     let raidsTable: ExtendsRaidType[] = [];
 
     const db = await Database.load(`sqlite:${liveDbName}.db`);
 
-    try {
-        const tableVersions: TableVersionType[] = await db.select(
-            "SELECT * FROM table_versions WHERE tableName = 'default_raids'"
-        );
-        console.log(`Current Version: ${tableVersions[0].version}\nProgram Version: ${DEFAULT_RAIDS_VERSION}`);
+    // * Default Raid Table 버전 확인 (IIFE)
+    (async () => {
+        if (skip) return;
+        try {
+            const tableVersions: TableVersionType[] = await db.select(
+                "SELECT * FROM table_versions WHERE tableName = 'default_raids'"
+            );
+            console.log(`Current Version: ${tableVersions[0].version}\nProgram Version: ${DEFAULT_RAIDS_VERSION}`);
 
-        if (tableVersions[0].version < DEFAULT_RAIDS_VERSION) {
-            // ? Default Raid Version이 현재 DB에 저장된 데이터보다 버전이 높을때
-            console.log("Default Raids Table 버전을 업데이트 합니다.");
-            await updateDefaultRaidsTable();
-        } else {
-            // ? Default Raid Version이 현재 DB에 저장된 데이터랑 같거나 낮을때
-            console.log("Default Raids Table 버전을 업데이트 하지 않음.");
+            if (tableVersions[0].version < DEFAULT_RAIDS_VERSION) {
+                // ? Default Raid Version이 현재 DB에 저장된 데이터보다 버전이 높을때
+                console.log("Default Raids Table 버전을 업데이트 합니다.");
+                await updateDefaultRaidsTable();
+            } else {
+                // ? Default Raid Version이 현재 DB에 저장된 데이터랑 같거나 낮을때
+                console.log("Default Raids Table 버전을 업데이트 하지 않음.");
+            }
+        } catch (error) {
+            console.error("Transaction failed:", error);
         }
-    } catch (error) {
-        console.error("Transaction failed:", error);
-    }
+    })();
 
     try {
         // ? live_raids 테이블에 등록되어있는 숙제표 기준으로 Table Join
@@ -144,6 +148,7 @@ export const loadLiveDB = async () => {
 
     // console.log(raidsTable);
 
+    // todo 이 계산식 부분만 따로 구현하면 될듯함
     let totalReward: number = 0; // * 총합 골드 보상
     let totalRaids: number = 0; // * 레이드 총 갯수
     let remainingReward: number = 0; // * 남은 골드 보상
