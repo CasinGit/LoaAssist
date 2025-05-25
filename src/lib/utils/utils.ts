@@ -86,7 +86,7 @@ export async function checkWindowsVersion(): Promise<"ok" | "unsupported"> {
 }
 
 // + 프로그램 수동 업데이트 함수
-export async function updateCheckDialog() {
+export async function updateCheckDialog(noDialog?: boolean) {
     try {
         invoke("pause_auto_focus"); // ? 오토 포커스 기능 정지
 
@@ -106,13 +106,15 @@ export async function updateCheckDialog() {
             }
         } else {
             console.log("최신 상태입니다.");
-            await message(
-                `✔️ 최신 상태입니다.\n현재 버전: v${result.current_version}\n최신 버전: v${result.latest_version}`,
-                {
-                    title: "업데이트 확인",
-                    kind: "info"
-                }
-            );
+            if (!noDialog) {
+                await message(
+                    `✔️ 최신 상태입니다.\n현재 버전: v${result.current_version}\n최신 버전: v${result.latest_version}`,
+                    {
+                        title: "업데이트 확인",
+                        kind: "info"
+                    }
+                );
+            }
         }
     } catch (err) {
         console.error("업데이트 확인 실패:", err);

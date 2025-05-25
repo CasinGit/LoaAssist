@@ -62,7 +62,7 @@
         try {
             await db.execute(`UPDATE live_raids SET complete = ? WHERE id = ?`, [Number(item.complete), item.id]);
 
-            await loadLiveDB();
+            await loadLiveDB(true);
 
             if (item.complete) {
                 const gold = await invoke("increment_gold", { value: item.reward! });

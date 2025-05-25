@@ -112,7 +112,8 @@ pub async fn increment_gold(value: u32) -> Result<u32, String> {
 #[tauri::command]
 pub async fn decrement_gold(value: u32) -> Result<u32, String> {
     let mut app_state = get_state().lock().await;
-    app_state.gold -= value;
+    // ? underflow 에러 방지
+    app_state.gold = app_state.gold.saturating_sub(value);
     save_state(&app_state);
     Ok(app_state.gold)
 }
