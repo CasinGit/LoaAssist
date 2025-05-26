@@ -1,13 +1,13 @@
 {
-    "version": "1.0.0",
-    "pub_date": "2025-05-13T02:01:34+09:00",
-    "notes": "정식 출시 버전입니다.",
+    "version": "1.1.0",
+    "pub_date": "2025-05-27T02:46:58+09:00",
+    "notes": "중복 실행 방지 기능 추가와 주요 버그 수정, 내부 성능 및 보안 개선이 포함된 안정성 중심 업데이트",
     "bootstrapper": {
         "url": "https://github.com/CasinGit/LoaAssist/releases/latest/download/loaassist-bootstrapper.exe",
-        "sha256": "2449a0a7ae2b94f0a3e1327adf58ede164be931b3381bca603cd752e03c2092d"
+        "sha256": "ee243417cf13d3a7e4654cf6b8b0480d6659927969f71ec382ec9898993434d6"
     },
     "release": {
         "url": "https://github.com/CasinGit/LoaAssist/releases/latest/download/LoaAssist.exe",
-        "sha256": "653270b1a57002a173572b7a3e1950d762605f112258f3e566e620de41d43ed3"
+        "sha256": "bd52e0331da32783e64d5481994bec6ca812992b689fae6ffff9a25e6d29d582"
     }
 }
