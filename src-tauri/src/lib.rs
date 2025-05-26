@@ -16,6 +16,7 @@ use dotenv::dotenv;
 use state::store::{get_app_data_dir, init_state, load_state};
 use std::{env, sync::Arc};
 use tauri::{Emitter, Listener, Manager, State, Window};
+use tauri_plugin_dialog::DialogExt;
 use tokio::sync::Mutex;
 use ui::animations::{
     animate_window_resize, ease_in_out_back, ease_in_out_expo, ease_in_out_quad, ease_in_out_quart,
@@ -136,10 +137,19 @@ pub fn run() {
             Ok(())
         })
         .plugin(tauri_plugin_single_instance::init(|app, _args, _cwd| {
-            let _ = app
-                .get_webview_window(WINDOW_LABEL)
-                .expect("no main window")
-                .set_focus();
+            // * 기존 인스턴스가 처리할 로직
+            if let Some(window) = app.get_webview_window(WINDOW_LABEL) {
+                let _ = window.unminimize();
+                let _ = window.show();
+                let _ = window.set_focus();
+
+                window
+                    .dialog()
+                    .message("이미 실행 중인 프로그램이 있습니다.")
+                    .show(|_| {
+                        println!("dialog closed");
+                    });
+            }
         }))
         .plugin(tauri_plugin_fs::init())
         .plugin(tauri_plugin_shell::init())

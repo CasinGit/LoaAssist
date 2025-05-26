@@ -93,7 +93,7 @@
             "color:white; font-style:bold; background-color:limeGreen; padding:3px; border-radius:4px; font-size:12px;"
         );
         // ? 사용자가 업데이트 확인 설정을 했을때만 실행
-        if (defaultSettings.update_check_enabled) updateCheckDialog();
+        if (defaultSettings.update_check_enabled) updateCheckDialog(true);
     });
 </script>
 
