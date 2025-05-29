@@ -3,12 +3,10 @@ use enigo::{Enigo, MouseControllable};
 use std::time::Instant;
 use std::{sync::Mutex, thread, time::Duration};
 use tauri::WebviewWindow;
-
-#[cfg(target_os = "windows")]
-use windows::Win32::UI::WindowsAndMessaging::{FindWindowW, SetForegroundWindow};
-
-#[cfg(target_os = "windows")]
 use windows::core::HSTRING;
+use windows::Win32::UI::WindowsAndMessaging::{
+    FindWindowW, IsIconic, IsWindowVisible, SetForegroundWindow,
+};
 
 /// ? 마우스 추적 활성화/비활성화 상태
 static TRACKER_RUNNING: Mutex<bool> = Mutex::new(false);
@@ -47,12 +45,39 @@ fn is_mouse_inside_window(window: &WebviewWindow) -> bool {
     false
 }
 
-/// + 다른 창으로 포커스 변경 (Windows 전용)
-#[cfg(target_os = "windows")]
+/// + 윈도우가 최소화 또는 숨겨진 상태인지 확인
+pub fn is_window_hidden_or_minimized(title: &str) -> bool {
+    let title_wide = HSTRING::from(title);
+
+    unsafe {
+        let hwnd = FindWindowW(None, &title_wide);
+        if hwnd.0 == 0 {
+            println!("❌ 창 '{}' 을(를) 찾을 수 없습니다", title);
+            return false;
+        }
+
+        let is_minimized = IsIconic(hwnd).as_bool();
+        let is_visible = IsWindowVisible(hwnd).as_bool();
+
+        if is_minimized || !is_visible {
+            // * 창이 최소화 상태이거나 숨김 상태일 때
+            return true;
+        }
+
+        false
+    }
+}
+
+/// + 다른 창으로 포커스 변경
 fn focus_other_window() {
     let enabled = AUTO_FOCUS_ENABLED.lock().unwrap();
     if !*enabled {
         println!("🔒 포커스 자동 이동이 비활성화되어 있어 실행하지 않음");
+        return;
+    }
+
+    if is_window_hidden_or_minimized("Lost Ark Assist") {
+        println!("⛔ 포커스 이동을 차단합니다");
         return;
     }
 
