@@ -150,6 +150,10 @@
                 console.log("새 창이 성공적으로 생성되었습니다.");
             });
 
+            newWindow.once("tauri://destroyed", () => {
+                console.log("새 창이 종료되었습니다.");
+            });
+
             newWindow.once("tauri://error", (e) => {
                 console.error("창 생성 중 오류 발생:", e);
             });
