@@ -3,6 +3,9 @@
         "svelte.svelte-vscode",
         "tauri-apps.tauri-vscode",
         "rust-lang.rust-analyzer",
-        "edwinhuish.better-comments-next"
+        "edwinhuish.better-comments-next",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint"
     ]
 }
