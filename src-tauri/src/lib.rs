@@ -168,11 +168,10 @@ pub fn run() {
             state::store::decrement_gold,                      // * Decrement Gold Fn
             state::store::get_user_settings,                   // * Get User Settings Fn
             state::store::set_user_settings,                   // * Set User Settings Fn
-            state::store::add_task,                            // // Add Task Fn
             state::store::get_position,                        // * Get Window Position
             state::store::set_position,                        // * Set Window Position
             window_utils::window_search::find_window_by_title, // * Find Process Title
-            window_utils::window_search::get_window_titles,    // Find All Process Title
+            window_utils::window_search::get_window_titles,    // // Find All Process Title
             window_utils::auto_focus_shift::pause_auto_focus,  // * Auto Focus Pause
             window_utils::auto_focus_shift::resume_auto_focus, // * Auto focus Resume
             get_os_info,                                       // * OS information
