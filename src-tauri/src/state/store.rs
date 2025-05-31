@@ -1,3 +1,5 @@
+use super::types::{AppState, UserSettings};
+use crate::window_utils::auto_focus_shift;
 use dirs::data_dir;
 use std::{
     fs::{self, File},
@@ -7,9 +9,6 @@ use std::{
 };
 use tauri::{AppHandle, Manager, PhysicalPosition};
 use tokio::sync::Mutex;
-
-use super::types::{AppState, UserSettings};
-use crate::window_utils::auto_focus_shift;
 
 static STATE: OnceLock<Arc<Mutex<AppState>>> = OnceLock::new();
 
