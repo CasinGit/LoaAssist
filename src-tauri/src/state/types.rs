@@ -32,6 +32,7 @@ pub struct UserSettings {
     pub auto_focus_enabled: bool,           // Auto Focus 기능 사용 여부
     pub auto_focus_settings: FocusSettings, // Auto Focus 기능 Settings
     pub focus_border_enabled: bool,         // 포커싱 테두리 기능 사용 여부
+    pub default_tab: String,                // 실행 시 기본적으로 보일 탭
 }
 
 impl Default for UserSettings {
@@ -45,6 +46,7 @@ impl Default for UserSettings {
             auto_focus_enabled: true,
             auto_focus_settings: FocusSettings::default(),
             focus_border_enabled: true,
+            default_tab: "Tab1".to_string(),
         }
     }
 }

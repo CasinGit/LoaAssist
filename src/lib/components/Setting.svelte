@@ -18,7 +18,7 @@
     } from "../../stores/appStore";
 
     import { DEFAULT_RAIDS_VERSION } from "$lib/db/schema";
-    import { UserSettingsType } from "$lib/types";
+    import { TABS, UserSettingsType } from "$lib/types";
     import { invoke } from "$lib/utils/invoke";
     import { updateCheckDialog } from "$lib/utils/utils";
 
@@ -42,6 +42,7 @@
     let autoFocusTitleElm: HTMLParagraphElement | null = $state(null);
     let autoFocusIdleTimeElm: HTMLParagraphElement | null = $state(null);
     let focusBorderElm: HTMLParagraphElement | null = $state(null);
+    let defaultTabElm: HTMLParagraphElement | null = $state(null);
 
     // + Subscribe to store
     const unsubscribe = appStore.subscribe((value) => {
@@ -85,6 +86,7 @@
             updateStyle(autoFocusTitleElm, changedSettings.auto_focus_settings?.game_title);
             updateStyle(autoFocusIdleTimeElm, changedSettings.auto_focus_settings?.shift_idle_time);
             updateStyle(focusBorderElm, changedSettings.focus_border_enabled);
+            updateStyle(defaultTabElm, changedSettings.default_tab);
         } else {
             // ? 변경된 설정이 없으면 모든 요소 초기화
             resetStyles([
@@ -97,7 +99,8 @@
                 autoFocusElm,
                 autoFocusTitleElm,
                 autoFocusIdleTimeElm,
-                focusBorderElm
+                focusBorderElm,
+                defaultTabElm
             ]);
         }
     });
@@ -245,6 +248,20 @@
     <div class="flex gap-1 text-sm">
         <p bind:this={updateElm}>🔸프로그램 시작할 때 업데이트 확인</p>
         <Checkbox color="red" class="ml-[0.05rem] mr-1" bind:checked={currentSettings.update_check_enabled} />
+    </div>
+
+    <div class="flex gap-1 text-sm">
+        <p bind:this={defaultTabElm}>🔸프로그램 시작할 때 기본 탭</p>
+        <select
+            class={`w-auto rounded-sm bg-slate-200 p-0 !pr-8 pl-0.5 text-xs font-bold text-black`}
+            name="tab"
+            id="tab"
+            bind:value={currentSettings.default_tab}
+        >
+            {#each TABS as tab}
+                <option class="font-bold text-black" value={tab.id}>{tab.name}</option>
+            {/each}
+        </select>
     </div>
 
     <div class="flex gap-1 text-sm">

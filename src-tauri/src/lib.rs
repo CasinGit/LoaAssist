@@ -170,6 +170,7 @@ pub fn run() {
             state::store::set_user_settings,                   // * Set User Settings Fn
             state::store::get_position,                        // * Get Window Position
             state::store::set_position,                        // * Set Window Position
+            state::store::get_default_tab,                     // * Get Default Tab
             window_utils::window_search::find_window_by_title, // * Find Process Title
             window_utils::window_search::get_window_titles,    // // Find All Process Title
             window_utils::auto_focus_shift::pause_auto_focus,  // * Auto Focus Pause

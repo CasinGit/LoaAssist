@@ -29,6 +29,7 @@ export interface TauriCommands {
     get_os_info; // ! No Arg, Return: [string, string]
     get_update_check_result; // ! No Arg, Return: UpdateCheckResult
     run_update_with_info; // ! Arg: { info: UpdateCheckResult.info }, No Return
+    get_default_tab; // ! No Arg, Return: String
 }
 
 // prettier-ignore
@@ -39,4 +40,5 @@ export type TauriCommandResponse<K extends keyof TauriCommands>
     : K extends "find_window_by_title" ? Promise<string>
     : K extends "get_os_info" ? Promise<[string, string]>
     : K extends "get_update_check_result" ? Promise<UpdateCheckResult>
+    : K extends "get_default_tab" ? Promise<string>
     : Promise<any>; // ? 기본 반환값

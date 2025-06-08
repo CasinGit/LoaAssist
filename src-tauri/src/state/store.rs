@@ -134,4 +134,10 @@ pub async fn set_position(new_position: PhysicalPosition<i32>) -> Result<(), Str
     Ok(())
 }
 
+#[tauri::command]
+pub async fn get_default_tab() -> Result<String, String> {
+    let app_state = get_state().lock().await;
+    Ok(app_state.user_settings.default_tab.clone())
+}
+
 // > Tauri Invoke Functions

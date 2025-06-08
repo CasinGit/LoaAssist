@@ -4,7 +4,7 @@
     import { onDestroy, onMount } from "svelte";
     import { slide } from "svelte/transition";
 
-    import { appStore, liveDbName } from "../../stores/appStore";
+    import { appStore, liveDbName, loadLiveDB } from "../../stores/appStore";
 
     import type { ExtendsRaidType } from "$lib/types";
 
@@ -27,9 +27,9 @@
 
     onMount(async () => {
         await loadRemainingRaids();
+        await loadLiveDB();
 
         const expansionValue = sessionStorage.getItem("expanded");
-        // console.log(expansionValue);
         if (expansionValue === "true") {
             expansion = Boolean(expansionValue);
         }
@@ -77,7 +77,7 @@
     }
 </script>
 
-<div class="mx-1 flex flex-col gap-2">
+<div class="mx-1 flex flex-col">
     <div class="flex flex-col gap-1">
         <div class="flex justify-between">
             <div class="text-sm">
@@ -113,30 +113,29 @@
                 </div>
             </div>
         </div>
-
-        {#if expansion}
-            <div transition:slide class="flex flex-col gap-1">
-                <p class="text-sm font-medium">남은 레이드 개수</p>
-                {#each remainingRaidsTable as item (item.id)}
-                    <div
-                        class="group flex items-center rounded-md bg-zinc-200 p-0.5 text-[0.7rem] font-black leading-[1-rem] text-gray-900 hover:bg-gray-400 hover:shadow"
-                    >
-                        <p class="mx-1 text-black">{item.raidName} {item.difficulty}</p>
-                        <p class="mr-1 text-black">{item.gate}관문</p>
-                        <p class="text-shadow mr-1 flex flex-auto justify-end text-right text-amber-300">
-                            {item.count} 개
-                        </p>
-                    </div>
-                {/each}
-            </div>
-        {/if}
-
-        <button class="flex w-fit self-center hover:scale-125" onclick={handleExpansion}>
-            {#if expansion}
-                <ChevronDoubleUpOutline />
-            {:else}
-                <ChevronDoubleDownOutline />
-            {/if}
-        </button>
     </div>
+
+    <button class="flex w-fit self-center hover:scale-125" onclick={handleExpansion}>
+        {#if expansion}
+            <ChevronDoubleUpOutline />
+        {:else}
+            <ChevronDoubleDownOutline />
+        {/if}
+    </button>
+    {#if expansion}
+        <div transition:slide class="flex flex-col gap-1">
+            <p class="text-sm font-medium">남은 레이드 개수</p>
+            {#each remainingRaidsTable as item (item.id)}
+                <div
+                    class="group flex items-center rounded-md bg-zinc-200 p-0.5 text-[0.7rem] font-black leading-[1-rem] text-gray-900 hover:bg-gray-400 hover:shadow"
+                >
+                    <p class="mx-1 text-black">{item.raidName} {item.difficulty}</p>
+                    <p class="mr-1 text-black">{item.gate}관문</p>
+                    <p class="text-shadow mr-1 flex flex-auto justify-end text-right text-amber-300">
+                        {item.count} 개
+                    </p>
+                </div>
+            {/each}
+        </div>
+    {/if}
 </div>
