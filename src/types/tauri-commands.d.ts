@@ -30,6 +30,7 @@ export interface TauriCommands {
     get_update_check_result; // ! No Arg, Return: UpdateCheckResult
     run_update_with_info; // ! Arg: { info: UpdateCheckResult.info }, No Return
     get_default_tab; // ! No Arg, Return: String
+    exit_app; // ! No Arg, No Return
 }
 
 // prettier-ignore

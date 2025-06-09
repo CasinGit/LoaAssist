@@ -84,6 +84,11 @@ async fn play_system_sound(sound: Option<&str>) -> Result<(), String> {
     Ok(())
 }
 
+#[tauri::command]
+fn exit_app(app: tauri::AppHandle) {
+    app.exit(0);
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     if cfg!(dev) {
@@ -159,6 +164,7 @@ pub fn run() {
         .manage(Arc::new(Mutex::new(load_state())))
         // ? Frontend 에서 Rust 함수 호출을 위해서 invoke handler에 등록
         .invoke_handler(tauri::generate_handler![
+            exit_app,                                          // * Process Exit Fn
             get_env,                                           // Get ENV Fn
             resize_with_custom,                                // * Resize Window Fn
             play_system_sound,                                 // * Play System Sound Fn

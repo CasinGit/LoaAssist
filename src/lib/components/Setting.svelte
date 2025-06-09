@@ -43,6 +43,7 @@
     let autoFocusIdleTimeElm: HTMLParagraphElement | null = $state(null);
     let focusBorderElm: HTMLParagraphElement | null = $state(null);
     let defaultTabElm: HTMLParagraphElement | null = $state(null);
+    let closeBtnBehaviorElm: HTMLParagraphElement | null = $state(null);
 
     // + Subscribe to store
     const unsubscribe = appStore.subscribe((value) => {
@@ -87,6 +88,7 @@
             updateStyle(autoFocusIdleTimeElm, changedSettings.auto_focus_settings?.shift_idle_time);
             updateStyle(focusBorderElm, changedSettings.focus_border_enabled);
             updateStyle(defaultTabElm, changedSettings.default_tab);
+            updateStyle(closeBtnBehaviorElm, changedSettings.close_button_behavior);
         } else {
             // ? 변경된 설정이 없으면 모든 요소 초기화
             resetStyles([
@@ -100,7 +102,8 @@
                 autoFocusTitleElm,
                 autoFocusIdleTimeElm,
                 focusBorderElm,
-                defaultTabElm
+                defaultTabElm,
+                closeBtnBehaviorElm
             ]);
         }
     });
@@ -265,6 +268,20 @@
     </div>
 
     <div class="flex gap-1 text-sm">
+        <p bind:this={closeBtnBehaviorElm}>🔸닫기 버튼 동작 설정</p>
+        <select
+            class={`w-auto rounded-sm bg-slate-200 p-0 !pr-8 pl-0.5 text-xs font-bold text-black`}
+            name="tab"
+            id="tab"
+            bind:value={currentSettings.close_button_behavior}
+        >
+            <option class="font-bold text-black" value={"tray"}>트레이로 최소화</option>
+            <option class="font-bold text-black" value={"exit"}>프로그램 종료</option>
+            <option class="font-bold text-black" value={"ask"}>매번 대화상자 표시</option>
+        </select>
+    </div>
+
+    <div class="flex gap-1 text-sm">
         <p bind:this={themeElm}>🔸테마</p>
         <select
             class={`w-auto rounded-sm bg-slate-200 p-0 !pr-8 pl-0.5 text-xs font-bold text-black`}
@@ -276,11 +293,6 @@
             <option class="font-bold text-black" value={"light"}>light</option>
             <option class="font-bold text-black" value={"dark"}>dark</option>
         </select>
-    </div>
-
-    <div class="flex gap-1 text-sm">
-        <p bind:this={classImgElm}>🔸클래스 이미지 사용</p>
-        <Checkbox color="red" class="ml-[0.05rem] mr-1" bind:checked={currentSettings.class_image} />
     </div>
 
     <div class="flex gap-1 text-sm">
@@ -349,6 +361,11 @@
     <div class="flex gap-1 text-sm">
         <p bind:this={focusBorderElm}>🔸포커스 테두리 효과</p>
         <Checkbox color="red" class="ml-[0.05rem] mr-1" bind:checked={currentSettings.focus_border_enabled} />
+    </div>
+
+    <div class="flex gap-1 text-sm">
+        <p bind:this={classImgElm}>🔸클래스 이미지 사용</p>
+        <Checkbox color="red" class="ml-[0.05rem] mr-1" bind:checked={currentSettings.class_image} />
     </div>
 
     <div class="flex w-full text-sm">
