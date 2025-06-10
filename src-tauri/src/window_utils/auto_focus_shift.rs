@@ -130,11 +130,10 @@ fn focus_other_window() {
                     println!("⚠️ '{}' 창 포커스 이동 실패", game_title.to_string_lossy());
                 }
             }
-            Err(err) => {
+            Err(_err) => {
                 println!(
-                    "❌ '{}' 창을 찾을 수 없습니다: {:?}",
-                    game_title.to_string_lossy(),
-                    err
+                    "❌ '{}' 창을 찾을 수 없습니다",
+                    game_title.to_string_lossy()
                 );
             }
         }

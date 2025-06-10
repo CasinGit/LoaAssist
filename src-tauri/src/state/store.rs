@@ -1,3 +1,5 @@
+use super::types::{AppState, UserSettings};
+use crate::window_utils::auto_focus_shift;
 use dirs::data_dir;
 use std::{
     fs::{self, File},
@@ -7,9 +9,6 @@ use std::{
 };
 use tauri::{AppHandle, Manager, PhysicalPosition};
 use tokio::sync::Mutex;
-
-use super::types::{AppState, FocusSettings, FoldedSettings, Task, UserSettings};
-use crate::window_utils::auto_focus_shift;
 
 static STATE: OnceLock<Arc<Mutex<AppState>>> = OnceLock::new();
 
@@ -43,35 +42,15 @@ pub fn load_state() -> AppState {
         if let Ok(mut file) = File::open(file_path) {
             let mut contents = String::new();
             if file.read_to_string(&mut contents).is_ok() {
-                if let Ok(state) = serde_json::from_str(&contents) {
+                if let Ok(state) = serde_json::from_str::<AppState>(&contents) {
                     return state;
                 }
             }
         }
     }
 
-    // ? 파일이 없거나 오류 발생 시 기본 상태 반환
-    AppState {
-        gold: 0,
-        user_settings: UserSettings {
-            update_check_enabled: true,
-            theme: "light".to_string(),
-            class_image: true,
-            folded_opacity_enabled: true,
-            folded_settings: FoldedSettings {
-                opacity: 60,   // opacity * 0.01
-                idle_time: 10, // sec
-            },
-            auto_focus_enabled: true, // 활성화
-            auto_focus_settings: FocusSettings {
-                game_title: "LOST ARK (64-bit, DX11) v.3.5.7.1".to_string(), // 창 이름
-                shift_idle_time: 1,                                          // sec
-            },
-            focus_border_enabled: true,
-        },
-        tasks: vec![],
-        window_position: PhysicalPosition { x: 100, y: 100 },
-    }
+    // * 기본 상태 반환
+    AppState::default()
 }
 
 // + 상태를 JSON 파일에 저장
@@ -142,14 +121,6 @@ pub async fn set_user_settings(app: AppHandle, settings: UserSettings) -> Result
 }
 
 #[tauri::command]
-pub async fn add_task(task: Task) -> Result<(), String> {
-    let mut app_state = get_state().lock().await;
-    app_state.tasks.push(task);
-    save_state(&app_state);
-    Ok(())
-}
-
-#[tauri::command]
 pub async fn get_position() -> Result<PhysicalPosition<i32>, String> {
     let app_state = get_state().lock().await;
     Ok(app_state.window_position.clone())
@@ -159,6 +130,20 @@ pub async fn get_position() -> Result<PhysicalPosition<i32>, String> {
 pub async fn set_position(new_position: PhysicalPosition<i32>) -> Result<(), String> {
     let mut app_state = get_state().lock().await;
     app_state.window_position = new_position;
+    save_state(&app_state);
+    Ok(())
+}
+
+#[tauri::command]
+pub async fn get_default_tab() -> Result<String, String> {
+    let app_state = get_state().lock().await;
+    Ok(app_state.user_settings.default_tab.clone())
+}
+
+#[tauri::command]
+pub async fn set_game_title(title: String) -> Result<(), String> {
+    let mut app_state = get_state().lock().await;
+    app_state.user_settings.auto_focus_settings.game_title = title;
     save_state(&app_state);
     Ok(())
 }
