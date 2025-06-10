@@ -140,4 +140,12 @@ pub async fn get_default_tab() -> Result<String, String> {
     Ok(app_state.user_settings.default_tab.clone())
 }
 
+#[tauri::command]
+pub async fn set_game_title(title: String) -> Result<(), String> {
+    let mut app_state = get_state().lock().await;
+    app_state.user_settings.auto_focus_settings.game_title = title;
+    save_state(&app_state);
+    Ok(())
+}
+
 // > Tauri Invoke Functions

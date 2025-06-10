@@ -177,6 +177,7 @@ pub fn run() {
             state::store::get_position,                        // * Get Window Position
             state::store::set_position,                        // * Set Window Position
             state::store::get_default_tab,                     // * Get Default Tab
+            state::store::set_game_title,                      // * Set Game Title
             window_utils::window_search::find_window_by_title, // * Find Process Title
             window_utils::window_search::get_window_titles,    // // Find All Process Title
             window_utils::auto_focus_shift::pause_auto_focus,  // * Auto Focus Pause

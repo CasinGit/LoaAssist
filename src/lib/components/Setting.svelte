@@ -44,6 +44,7 @@
     let focusBorderElm: HTMLParagraphElement | null = $state(null);
     let defaultTabElm: HTMLParagraphElement | null = $state(null);
     let closeBtnBehaviorElm: HTMLParagraphElement | null = $state(null);
+    let autoDetectTitleElm: HTMLParagraphElement | null = $state(null);
 
     // + Subscribe to store
     const unsubscribe = appStore.subscribe((value) => {
@@ -89,6 +90,7 @@
             updateStyle(focusBorderElm, changedSettings.focus_border_enabled);
             updateStyle(defaultTabElm, changedSettings.default_tab);
             updateStyle(closeBtnBehaviorElm, changedSettings.close_button_behavior);
+            updateStyle(autoDetectTitleElm, changedSettings.auto_detect_title);
         } else {
             // ? 변경된 설정이 없으면 모든 요소 초기화
             resetStyles([
@@ -103,7 +105,8 @@
                 autoFocusIdleTimeElm,
                 focusBorderElm,
                 defaultTabElm,
-                closeBtnBehaviorElm
+                closeBtnBehaviorElm,
+                autoDetectTitleElm
             ]);
         }
     });
@@ -251,6 +254,11 @@
     <div class="flex gap-1 text-sm">
         <p bind:this={updateElm}>🔸프로그램 시작할 때 업데이트 확인</p>
         <Checkbox color="red" class="ml-[0.05rem] mr-1" bind:checked={currentSettings.update_check_enabled} />
+    </div>
+
+    <div class="flex gap-1 text-sm">
+        <p bind:this={autoDetectTitleElm}>🔸프로그램 시작할 때 창 이름 자동 감지</p>
+        <Checkbox color="red" class="ml-[0.05rem] mr-1" bind:checked={currentSettings.auto_detect_title} />
     </div>
 
     <div class="flex gap-1 text-sm">

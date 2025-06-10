@@ -34,6 +34,7 @@ pub struct UserSettings {
     pub focus_border_enabled: bool,         // 포커싱 테두리 기능 사용 여부
     pub default_tab: String,                // 실행 시 기본적으로 보일 탭
     pub close_button_behavior: String,      // 닫기 버튼의 행동 설정
+    pub auto_detect_title: bool,            // 실행 시 프로그램 이름 자동 감지
 }
 
 impl Default for UserSettings {
@@ -49,6 +50,7 @@ impl Default for UserSettings {
             focus_border_enabled: true,
             default_tab: "Tab1".to_string(),
             close_button_behavior: "tray".to_string(),
+            auto_detect_title: true,
         }
     }
 }

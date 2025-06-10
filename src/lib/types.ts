@@ -114,6 +114,7 @@ export class UserSettingsType {
     focus_border_enabled: boolean;
     default_tab: string;
     close_button_behavior: string;
+    auto_detect_title: boolean;
 
     // ? 타입 기본값 설정
     constructor(initialSettings?: Partial<UserSettingsType>) {
@@ -130,6 +131,7 @@ export class UserSettingsType {
         this.focus_border_enabled = initialSettings?.focus_border_enabled ?? true;
         this.default_tab = initialSettings?.default_tab ?? "Tab1";
         this.close_button_behavior = initialSettings?.close_button_behavior ?? "tray";
+        this.auto_detect_title = initialSettings?.auto_detect_title ?? true;
     }
 
     // ? defaultSettings, currentSettings 두개의 User Setting 객체 비교

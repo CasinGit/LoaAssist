@@ -31,6 +31,7 @@ export interface TauriCommands {
     run_update_with_info; // ! Arg: { info: UpdateCheckResult.info }, No Return
     get_default_tab; // ! No Arg, Return: String
     exit_app; // ! No Arg, No Return
+    set_game_title: { title: string };
 }
 
 // prettier-ignore

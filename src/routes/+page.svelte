@@ -3,7 +3,7 @@
     import { getCurrentWindow, LogicalPosition } from "@tauri-apps/api/window";
     import { onDestroy, onMount } from "svelte";
 
-    import { appStore } from "../stores/appStore";
+    import { appStore, setDetectTitle } from "../stores/appStore";
 
     import Tab from "$lib/components/Tab.svelte";
     import TitleBar from "$lib/components/TitleBar.svelte";
@@ -94,13 +94,25 @@
     }
 
     // + 프로그램을 시작했을때 한번만 실행 (새로고침 X)
-    listen("on:app_start_once", () => {
+    listen("on:app_start_once", async () => {
         console.log(
             "%cApp Start Once Event!",
             "color:white; font-style:bold; background-color:limeGreen; padding:3px; border-radius:4px; font-size:12px;"
         );
-        // ? 사용자가 업데이트 확인 설정을 했을때만 실행
+
+        // ? 사용자가 자동 업데이트 확인을 허용했을 때만 실행
         if (defaultSettings.update_check_enabled) updateCheckDialog(true);
+
+        // ? 사용자가 자동 감지 기능을 허용했을 때만 실행
+        if (defaultSettings.auto_detect_title) {
+            const findTitle = await invoke("find_window_by_title", { target: "LOST ARK" });
+
+            if (findTitle) {
+                // * 클라이언트 이름을 찾았을 때
+                await setDetectTitle(findTitle);
+                invoke("play_system_sound", { sound: "Alarm" });
+            }
+        }
     });
 </script>
 

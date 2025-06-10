@@ -248,9 +248,26 @@ checkUpdate(); // * 프로그램을 새로고침해도 무조건 한번 실행
 
 export const setUserSettings = async (userSettings: UserSettingsType) => {
     await invoke("set_user_settings", { settings: userSettings });
+
     // ! 깊은 복사로 동일 참조 문제 방지
     appStore.update((state) => ({
         ...state,
         userSettings: cloneDeep(userSettings)
+    }));
+};
+
+export const setDetectTitle = async (title: string) => {
+    await invoke("set_game_title", { title });
+
+    // ? 기존 구조 유지하면서 game_title 필드만 수정
+    appStore.update((state) => ({
+        ...state,
+        userSettings: {
+            ...state.userSettings,
+            auto_focus_settings: {
+                ...state.userSettings.auto_focus_settings,
+                game_title: title
+            }
+        }
     }));
 };
