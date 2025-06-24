@@ -67,9 +67,8 @@ export const loadLiveDB = async (skip?: boolean) => {
 
     const db = await Database.load(`sqlite:${liveDbName}.db`);
 
-    // * Default Raid Table 버전 확인 (IIFE)
-    (async () => {
-        if (skip) return;
+    // * Default Raid Table 버전 확인
+    if (!skip) {
         try {
             const tableVersions: TableVersionType[] = await db.select(
                 "SELECT * FROM table_versions WHERE tableName = 'default_raids'"
@@ -79,7 +78,7 @@ export const loadLiveDB = async (skip?: boolean) => {
             if (tableVersions[0].version < DEFAULT_RAIDS_VERSION) {
                 // ? Default Raid Version이 현재 DB에 저장된 데이터보다 버전이 높을때
                 console.log("Default Raids Table 버전을 업데이트 합니다.");
-                await updateDefaultRaidsTable();
+                await updateDefaultRaidsTable(db);
             } else {
                 // ? Default Raid Version이 현재 DB에 저장된 데이터랑 같거나 낮을때
                 console.log("Default Raids Table 버전을 업데이트 하지 않음.");
@@ -87,7 +86,7 @@ export const loadLiveDB = async (skip?: boolean) => {
         } catch (error) {
             console.error("Transaction failed:", error);
         }
-    })();
+    }
 
     try {
         // ? live_raids 테이블에 등록되어있는 숙제표 기준으로 Table Join
