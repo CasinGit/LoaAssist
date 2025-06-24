@@ -176,7 +176,7 @@
         "raidName": "일리아칸",
         "difficulty": "노말",
         "gate": "1",
-        "reward": 1000,
+        "reward": 850,
         "resetType": 1
     },
     {
@@ -185,7 +185,7 @@
         "raidName": "일리아칸",
         "difficulty": "노말",
         "gate": "2",
-        "reward": 1800,
+        "reward": 1550,
         "resetType": 1
     },
     {
@@ -194,7 +194,7 @@
         "raidName": "일리아칸",
         "difficulty": "노말",
         "gate": "3",
-        "reward": 2600,
+        "reward": 2300,
         "resetType": 1
     },
     {
@@ -203,7 +203,7 @@
         "raidName": "일리아칸",
         "difficulty": "하드",
         "gate": "1",
-        "reward": 1500,
+        "reward": 1200,
         "resetType": 1
     },
     {
@@ -212,7 +212,7 @@
         "raidName": "일리아칸",
         "difficulty": "하드",
         "gate": "2",
-        "reward": 2500,
+        "reward": 2000,
         "resetType": 1
     },
     {
@@ -221,7 +221,7 @@
         "raidName": "일리아칸",
         "difficulty": "하드",
         "gate": "3",
-        "reward": 3500,
+        "reward": 2800,
         "resetType": 1
     },
     {
@@ -230,7 +230,7 @@
         "raidName": "카멘",
         "difficulty": "노말",
         "gate": "1",
-        "reward": 2000,
+        "reward": 1600,
         "resetType": 1
     },
     {
@@ -239,7 +239,7 @@
         "raidName": "카멘",
         "difficulty": "노말",
         "gate": "2",
-        "reward": 2500,
+        "reward": 2000,
         "resetType": 1
     },
     {
@@ -248,7 +248,7 @@
         "raidName": "카멘",
         "difficulty": "노말",
         "gate": "3",
-        "reward": 3500,
+        "reward": 2800,
         "resetType": 1
     },
     {
@@ -266,7 +266,7 @@
         "raidName": "카멘",
         "difficulty": "하드",
         "gate": "2",
-        "reward": 3000,
+        "reward": 2400,
         "resetType": 1
     },
     {
@@ -275,7 +275,7 @@
         "raidName": "카멘",
         "difficulty": "하드",
         "gate": "3",
-        "reward": 5000,
+        "reward": 3600,
         "resetType": 1
     },
     {
@@ -284,7 +284,7 @@
         "raidName": "카멘",
         "difficulty": "하드",
         "gate": "4",
-        "reward": 5500,
+        "reward": 5000,
         "resetType": 2
     },
     {
@@ -347,7 +347,7 @@
         "raidName": "상아탑",
         "difficulty": "노말",
         "gate": "1",
-        "reward": 1500,
+        "reward": 1200,
         "resetType": 1
     },
     {
@@ -356,7 +356,7 @@
         "raidName": "상아탑",
         "difficulty": "노말",
         "gate": "2",
-        "reward": 2000,
+        "reward": 1600,
         "resetType": 1
     },
     {
@@ -365,7 +365,7 @@
         "raidName": "상아탑",
         "difficulty": "노말",
         "gate": "3",
-        "reward": 3000,
+        "reward": 2400,
         "resetType": 1
     },
     {
@@ -374,7 +374,7 @@
         "raidName": "상아탑",
         "difficulty": "하드",
         "gate": "1",
-        "reward": 1750,
+        "reward": 1400,
         "resetType": 1
     },
     {
@@ -383,7 +383,7 @@
         "raidName": "상아탑",
         "difficulty": "하드",
         "gate": "2",
-        "reward": 2500,
+        "reward": 2000,
         "resetType": 1
     },
     {
@@ -392,7 +392,7 @@
         "raidName": "상아탑",
         "difficulty": "하드",
         "gate": "3",
-        "reward": 4750,
+        "reward": 3800,
         "resetType": 1
     },
     {
@@ -401,7 +401,7 @@
         "raidName": "[서막] 에키드나",
         "difficulty": "노말",
         "gate": "1",
-        "reward": 3000,
+        "reward": 2300,
         "resetType": 1
     },
     {
@@ -410,7 +410,7 @@
         "raidName": "[서막] 에키드나",
         "difficulty": "노말",
         "gate": "2",
-        "reward": 6500,
+        "reward": 5000,
         "resetType": 1
     },
     {
@@ -419,7 +419,7 @@
         "raidName": "[서막] 에키드나",
         "difficulty": "하드",
         "gate": "1",
-        "reward": 3500,
+        "reward": 2800,
         "resetType": 1
     },
     {
@@ -428,7 +428,7 @@
         "raidName": "[서막] 에키드나",
         "difficulty": "하드",
         "gate": "2",
-        "reward": 7500,
+        "reward": 6000,
         "resetType": 1
     },
     {
@@ -437,7 +437,7 @@
         "raidName": "[1막] 에기르",
         "difficulty": "노말",
         "gate": "1",
-        "reward": 5500,
+        "reward": 4750,
         "resetType": 1
     },
     {
@@ -446,7 +446,7 @@
         "raidName": "[1막] 에기르",
         "difficulty": "노말",
         "gate": "2",
-        "reward": 12500,
+        "reward": 10750,
         "resetType": 1
     },
     {
@@ -455,7 +455,7 @@
         "raidName": "[1막] 에기르",
         "difficulty": "하드",
         "gate": "1",
-        "reward": 9000,
+        "reward": 8000,
         "resetType": 1
     },
     {
@@ -464,7 +464,7 @@
         "raidName": "[1막] 에기르",
         "difficulty": "하드",
         "gate": "2",
-        "reward": 18500,
+        "reward": 16500,
         "resetType": 1
     },
     {
@@ -473,7 +473,7 @@
         "raidName": "[2막] 아브렐슈드",
         "difficulty": "노말",
         "gate": "1",
-        "reward": 8500,
+        "reward": 7250,
         "resetType": 1
     },
     {
@@ -482,7 +482,7 @@
         "raidName": "[2막] 아브렐슈드",
         "difficulty": "노말",
         "gate": "2",
-        "reward": 16500,
+        "reward": 14250,
         "resetType": 1
     },
     {
@@ -509,7 +509,7 @@
         "raidName": "베히모스",
         "difficulty": "노말",
         "gate": "1",
-        "reward": 3500,
+        "reward": 2800,
         "resetType": 1
     },
     {
@@ -518,7 +518,7 @@
         "raidName": "베히모스",
         "difficulty": "노말",
         "gate": "2",
-        "reward": 7500,
+        "reward": 6000,
         "resetType": 1
     },
     {

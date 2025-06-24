@@ -67,9 +67,8 @@ export const loadLiveDB = async (skip?: boolean) => {
 
     const db = await Database.load(`sqlite:${liveDbName}.db`);
 
-    // * Default Raid Table 버전 확인 (IIFE)
-    (async () => {
-        if (skip) return;
+    // * Default Raid Table 버전 확인
+    if (!skip) {
         try {
             const tableVersions: TableVersionType[] = await db.select(
                 "SELECT * FROM table_versions WHERE tableName = 'default_raids'"
@@ -79,7 +78,7 @@ export const loadLiveDB = async (skip?: boolean) => {
             if (tableVersions[0].version < DEFAULT_RAIDS_VERSION) {
                 // ? Default Raid Version이 현재 DB에 저장된 데이터보다 버전이 높을때
                 console.log("Default Raids Table 버전을 업데이트 합니다.");
-                await updateDefaultRaidsTable();
+                await updateDefaultRaidsTable(db);
             } else {
                 // ? Default Raid Version이 현재 DB에 저장된 데이터랑 같거나 낮을때
                 console.log("Default Raids Table 버전을 업데이트 하지 않음.");
@@ -87,7 +86,7 @@ export const loadLiveDB = async (skip?: boolean) => {
         } catch (error) {
             console.error("Transaction failed:", error);
         }
-    })();
+    }
 
     try {
         // ? live_raids 테이블에 등록되어있는 숙제표 기준으로 Table Join
@@ -221,36 +220,28 @@ export const getUserSettings = async () => {
 };
 getUserSettings(); // * 프로그램 실행시 User Settings 불러오기
 
-export const checkUpdate = async () => {
-    // ? 프로그램 업데이트가 있는지 확인
-    try {
-        invoke("get_update_check_result").then((result) => {
-            // console.log(result);
-            if (result.should_update) {
-                console.log("최신 버전이 존재함");
-                appStore.update((state) => ({
-                    ...state,
-                    updateExists: true
-                }));
-            } else {
-                console.log("최신 상태입니다.");
-                appStore.update((state) => ({
-                    ...state,
-                    updateExists: false
-                }));
-            }
-        });
-    } catch (err) {
-        console.error("업데이트 확인 실패:", err);
-    }
-};
-checkUpdate(); // * 프로그램을 새로고침해도 무조건 한번 실행
-
 export const setUserSettings = async (userSettings: UserSettingsType) => {
     await invoke("set_user_settings", { settings: userSettings });
+
     // ! 깊은 복사로 동일 참조 문제 방지
     appStore.update((state) => ({
         ...state,
         userSettings: cloneDeep(userSettings)
+    }));
+};
+
+export const setDetectTitle = async (title: string) => {
+    await invoke("set_game_title", { title });
+
+    // ? 기존 구조 유지하면서 game_title 필드만 수정
+    appStore.update((state) => ({
+        ...state,
+        userSettings: {
+            ...state.userSettings,
+            auto_focus_settings: {
+                ...state.userSettings.auto_focus_settings,
+                game_title: title
+            }
+        }
     }));
 };

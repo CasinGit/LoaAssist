@@ -1,13 +1,13 @@
 {
-    "version": "1.0.0",
-    "pub_date": "2025-05-13T02:01:34+09:00",
-    "notes": "정식 출시 버전입니다.",
+    "version": "1.2.0",
+    "pub_date": "2025-06-25T01:27:05+09:00",
+    "notes": "자동 포커스 동작 개선, 기본 탭 설정 및 닫기 버튼 동작 설정 기능 추가, 클라이언트 자동 감지 지원 등 기능 향상 업데이트입니다. 설정 마이그레이션, 중복 실행 방지, 트레이 UI 개선과 더불어 레이드 보상 데이터가 최신 패치(25.06.25)에 맞춰 반영되었습니다.",
     "bootstrapper": {
         "url": "https://github.com/CasinGit/LoaAssist/releases/latest/download/loaassist-bootstrapper.exe",
-        "sha256": "2449a0a7ae2b94f0a3e1327adf58ede164be931b3381bca603cd752e03c2092d"
+        "sha256": "ee243417cf13d3a7e4654cf6b8b0480d6659927969f71ec382ec9898993434d6"
     },
     "release": {
         "url": "https://github.com/CasinGit/LoaAssist/releases/latest/download/LoaAssist.exe",
-        "sha256": "653270b1a57002a173572b7a3e1950d762605f112258f3e566e620de41d43ed3"
+        "sha256": "2ccbe9b3ff488a64da7ee9e234e636462a3e9683a2899fe1c4099e4285c7dfd8"
     }
 }

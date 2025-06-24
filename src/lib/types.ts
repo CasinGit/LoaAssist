@@ -1,5 +1,31 @@
 import type { Component } from "svelte";
 
+import Dashboard from "./components/Dashboard.svelte";
+import Setting from "./components/Setting.svelte";
+import WorkSheet from "./components/WorkSheet.svelte";
+
+// * 탭 목록 정의
+export const TABS: TabType[] = [
+    { id: "Tab1", name: "대시보드", component: Dashboard },
+    { id: "Tab2", name: "숙제표", component: WorkSheet },
+    { id: "Tab3", name: "설정", component: Setting }
+];
+
+// * Tab Component Type
+export interface TabType {
+    id: string;
+    name: string;
+    component: Component; // component: SvelteComponent<Record<string, any>, any, any>;
+}
+
+// * 시스템 사운드 타입
+export const SystemSounds = {
+    Background: "일반 메세지, 경고음 사운드",
+    Foreground: "시스템 오류 사운드",
+    Logon: "시스템 로그온 사운드",
+    Alarm: "일반적인 알림 사운드"
+} as const;
+
 // * 클래스 타입
 export enum ClassType {
     버서커 = 102,
@@ -71,13 +97,6 @@ export interface ExtendsRaidType extends RaidType, CharacterType, LiveType {
     count?: any;
 }
 
-// * Tab Component Type
-export interface TabType {
-    id: string;
-    name: string;
-    component: Component; // component: SvelteComponent<Record<string, any>, any, any>;
-}
-
 // * DB Table Version Type
 export interface TableVersionType {
     tableName: string;
@@ -101,6 +120,9 @@ export class UserSettingsType {
         shift_idle_time: number;
     };
     focus_border_enabled: boolean;
+    default_tab: string;
+    close_button_behavior: string;
+    auto_detect_title: boolean;
 
     // ? 타입 기본값 설정
     constructor(initialSettings?: Partial<UserSettingsType>) {
@@ -115,6 +137,9 @@ export class UserSettingsType {
             shift_idle_time: 1
         };
         this.focus_border_enabled = initialSettings?.focus_border_enabled ?? true;
+        this.default_tab = initialSettings?.default_tab ?? "Tab1";
+        this.close_button_behavior = initialSettings?.close_button_behavior ?? "tray";
+        this.auto_detect_title = initialSettings?.auto_detect_title ?? true;
     }
 
     // ? defaultSettings, currentSettings 두개의 User Setting 객체 비교

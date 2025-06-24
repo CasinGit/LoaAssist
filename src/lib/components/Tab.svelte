@@ -3,16 +3,14 @@
 
     import { appStore } from "../../stores/appStore";
 
-    import type { TabType } from "$lib/types";
-    import { updateCheckDialog } from "$lib/utils/utils";
+    import { TABS } from "$lib/types";
+    import { checkUpdateUnified } from "$lib/utils/utils";
 
     const {
-        tabs, // * 탭 리스트
-        activeTab, // * 현재 활성화된 탭
+        currentTab, // * 현재 활성화된 탭
         onTabSelect // * 탭 선택 시 호출되는 콜백 함수
     }: {
-        tabs: TabType[];
-        activeTab: string;
+        currentTab: string;
         onTabSelect: (id: string) => void;
     } = $props();
 
@@ -33,16 +31,16 @@
 
     // + 프로그램 수동 업데이트 함수
     async function handleUpdateCheck() {
-        updateCheckDialog();
+        checkUpdateUnified(true, true); // * Dialog 포함 + forceRefresh
     }
 </script>
 
 <!-- 탭 UI -->
 <div class="tabs">
     <div>
-        {#each tabs as tab}
+        {#each TABS as tab}
             <button
-                class:selected={tab.id === activeTab}
+                class:selected={tab.id === currentTab}
                 class="me-2 inline-block cursor-pointer rounded-t-lg border-b-2 border-transparent p-1 hover:border-gray-300 hover:text-gray-300"
                 onclick={() => onTabSelect(tab.id)}
             >

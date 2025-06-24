@@ -84,6 +84,11 @@ async fn play_system_sound(sound: Option<&str>) -> Result<(), String> {
     Ok(())
 }
 
+#[tauri::command]
+fn exit_app(app: tauri::AppHandle) {
+    app.exit(0);
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     if cfg!(dev) {
@@ -159,6 +164,7 @@ pub fn run() {
         .manage(Arc::new(Mutex::new(load_state())))
         // ? Frontend 에서 Rust 함수 호출을 위해서 invoke handler에 등록
         .invoke_handler(tauri::generate_handler![
+            exit_app,                                          // * Process Exit Fn
             get_env,                                           // Get ENV Fn
             resize_with_custom,                                // * Resize Window Fn
             play_system_sound,                                 // * Play System Sound Fn
@@ -168,11 +174,12 @@ pub fn run() {
             state::store::decrement_gold,                      // * Decrement Gold Fn
             state::store::get_user_settings,                   // * Get User Settings Fn
             state::store::set_user_settings,                   // * Set User Settings Fn
-            state::store::add_task,                            // // Add Task Fn
             state::store::get_position,                        // * Get Window Position
             state::store::set_position,                        // * Set Window Position
+            state::store::get_default_tab,                     // * Get Default Tab
+            state::store::set_game_title,                      // * Set Game Title
             window_utils::window_search::find_window_by_title, // * Find Process Title
-            window_utils::window_search::get_window_titles,    // Find All Process Title
+            window_utils::window_search::get_window_titles,    // // Find All Process Title
             window_utils::auto_focus_shift::pause_auto_focus,  // * Auto Focus Pause
             window_utils::auto_focus_shift::resume_auto_focus, // * Auto focus Resume
             get_os_info,                                       // * OS information

@@ -18,9 +18,9 @@
     } from "../../stores/appStore";
 
     import { DEFAULT_RAIDS_VERSION } from "$lib/db/schema";
-    import { UserSettingsType } from "$lib/types";
+    import { TABS, UserSettingsType } from "$lib/types";
     import { invoke } from "$lib/utils/invoke";
-    import { updateCheckDialog } from "$lib/utils/utils";
+    import { checkUpdateUnified } from "$lib/utils/utils";
 
     let appVersion: string | null = $state(null);
 
@@ -42,6 +42,9 @@
     let autoFocusTitleElm: HTMLParagraphElement | null = $state(null);
     let autoFocusIdleTimeElm: HTMLParagraphElement | null = $state(null);
     let focusBorderElm: HTMLParagraphElement | null = $state(null);
+    let defaultTabElm: HTMLParagraphElement | null = $state(null);
+    let closeBtnBehaviorElm: HTMLParagraphElement | null = $state(null);
+    let autoDetectTitleElm: HTMLParagraphElement | null = $state(null);
 
     // + Subscribe to store
     const unsubscribe = appStore.subscribe((value) => {
@@ -85,6 +88,9 @@
             updateStyle(autoFocusTitleElm, changedSettings.auto_focus_settings?.game_title);
             updateStyle(autoFocusIdleTimeElm, changedSettings.auto_focus_settings?.shift_idle_time);
             updateStyle(focusBorderElm, changedSettings.focus_border_enabled);
+            updateStyle(defaultTabElm, changedSettings.default_tab);
+            updateStyle(closeBtnBehaviorElm, changedSettings.close_button_behavior);
+            updateStyle(autoDetectTitleElm, changedSettings.auto_detect_title);
         } else {
             // ? 변경된 설정이 없으면 모든 요소 초기화
             resetStyles([
@@ -97,7 +103,10 @@
                 autoFocusElm,
                 autoFocusTitleElm,
                 autoFocusIdleTimeElm,
-                focusBorderElm
+                focusBorderElm,
+                defaultTabElm,
+                closeBtnBehaviorElm,
+                autoDetectTitleElm
             ]);
         }
     });
@@ -148,6 +157,10 @@
             // ! 이벤트 리스너 추가 (필요한 경우)
             newWindow.once("tauri://created", () => {
                 console.log("새 창이 성공적으로 생성되었습니다.");
+            });
+
+            newWindow.once("tauri://destroyed", () => {
+                console.log("새 창이 종료되었습니다.");
             });
 
             newWindow.once("tauri://error", (e) => {
@@ -226,7 +239,7 @@
 
     // + 프로그램 수동 업데이트 함수
     async function handleUpdateCheck() {
-        updateCheckDialog();
+        checkUpdateUnified(true, true); // * Dialog 포함 + forceRefresh
     }
 </script>
 
@@ -244,6 +257,39 @@
     </div>
 
     <div class="flex gap-1 text-sm">
+        <p bind:this={autoDetectTitleElm}>🔸프로그램 시작할 때 창 이름 자동 감지</p>
+        <Checkbox color="red" class="ml-[0.05rem] mr-1" bind:checked={currentSettings.auto_detect_title} />
+    </div>
+
+    <div class="flex gap-1 text-sm">
+        <p bind:this={defaultTabElm}>🔸프로그램 시작할 때 기본 탭</p>
+        <select
+            class={`w-auto rounded-sm bg-slate-200 p-0 !pr-8 pl-0.5 text-xs font-bold text-black`}
+            name="tab"
+            id="tab"
+            bind:value={currentSettings.default_tab}
+        >
+            {#each TABS as tab}
+                <option class="font-bold text-black" value={tab.id}>{tab.name}</option>
+            {/each}
+        </select>
+    </div>
+
+    <div class="flex gap-1 text-sm">
+        <p bind:this={closeBtnBehaviorElm}>🔸닫기 버튼 동작 설정</p>
+        <select
+            class={`w-auto rounded-sm bg-slate-200 p-0 !pr-8 pl-0.5 text-xs font-bold text-black`}
+            name="tab"
+            id="tab"
+            bind:value={currentSettings.close_button_behavior}
+        >
+            <option class="font-bold text-black" value={"tray"}>트레이로 최소화</option>
+            <option class="font-bold text-black" value={"exit"}>프로그램 종료</option>
+            <option class="font-bold text-black" value={"ask"}>매번 대화상자 표시</option>
+        </select>
+    </div>
+
+    <div class="flex gap-1 text-sm">
         <p bind:this={themeElm}>🔸테마</p>
         <select
             class={`w-auto rounded-sm bg-slate-200 p-0 !pr-8 pl-0.5 text-xs font-bold text-black`}
@@ -255,11 +301,6 @@
             <option class="font-bold text-black" value={"light"}>light</option>
             <option class="font-bold text-black" value={"dark"}>dark</option>
         </select>
-    </div>
-
-    <div class="flex gap-1 text-sm">
-        <p bind:this={classImgElm}>🔸클래스 이미지 사용</p>
-        <Checkbox color="red" class="ml-[0.05rem] mr-1" bind:checked={currentSettings.class_image} />
     </div>
 
     <div class="flex gap-1 text-sm">
@@ -328,6 +369,11 @@
     <div class="flex gap-1 text-sm">
         <p bind:this={focusBorderElm}>🔸포커스 테두리 효과</p>
         <Checkbox color="red" class="ml-[0.05rem] mr-1" bind:checked={currentSettings.focus_border_enabled} />
+    </div>
+
+    <div class="flex gap-1 text-sm">
+        <p bind:this={classImgElm}>🔸클래스 이미지 사용</p>
+        <Checkbox color="red" class="ml-[0.05rem] mr-1" bind:checked={currentSettings.class_image} />
     </div>
 
     <div class="flex w-full text-sm">

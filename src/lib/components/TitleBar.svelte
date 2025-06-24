@@ -4,7 +4,7 @@
 
 <script lang="ts">
     import { getCurrentWindow } from "@tauri-apps/api/window";
-    import { message } from "@tauri-apps/plugin-dialog";
+    import { confirm, message } from "@tauri-apps/plugin-dialog";
     import { Tooltip } from "flowbite-svelte";
     import {
         AngleDownOutline,
@@ -90,15 +90,15 @@
 
         setupListener(); // ! Listener 추가
         listenerResetTransparency(); // ? 투명도 조작 초기 타이머 시작
-    });
 
-    onDestroy(() => {
-        console.log(
-            "%cCleanup completed on TitleBar.svelte component unmount.",
-            "color: white; font-style: italic; background-color: red;padding: 3px; border-radius: 4px; font-size:12px"
-        );
-        removeListener(); // ! Listener 제거
-        unsubscribe(); // ! Cleanup on unmount
+        onDestroy(() => {
+            console.log(
+                "%cCleanup completed on TitleBar.svelte component unmount.",
+                "color: white; font-style: italic; background-color: red;padding: 3px; border-radius: 4px; font-size:12px"
+            );
+            removeListener(); // ! Listener 제거
+            unsubscribe(); // ! Cleanup on unmount
+        });
     });
 
     // DEV 환경에서만 존재하는 핸들러를 변수로 저장
@@ -106,16 +106,8 @@
 
     // + Event Listener Group (Add)
     function setupListener() {
-        document.getElementById("titlebar-minimize")?.addEventListener("click", () => {
-            isTaskbarHide = false;
-            appWindow.setSkipTaskbar(false);
-            appWindow.minimize();
-        });
-        document.getElementById("titlebar-close")?.addEventListener("click", () => {
-            isTaskbarHide = false;
-            appWindow.setSkipTaskbar(false);
-            appWindow.hide();
-        });
+        document.getElementById("titlebar-close")?.addEventListener("click", handleCloseClick);
+        document.getElementById("titlebar-minimize")?.addEventListener("click", handleMinimizeClick);
         document.getElementById("titlebar-resize")?.addEventListener("click", listenerResize);
         document.getElementById("titlebar-hide")?.addEventListener("dblclick", listenerHideFromTaskbar);
         window.addEventListener("keydown", listenerTabKeyDown);
@@ -142,16 +134,8 @@
 
     // + Event Listener Group (Remove)
     function removeListener() {
-        document.getElementById("titlebar-minimize")?.removeEventListener("click", () => {
-            isTaskbarHide = false;
-            appWindow.setSkipTaskbar(false);
-            appWindow.minimize();
-        });
-        document.getElementById("titlebar-close")?.removeEventListener("click", () => {
-            isTaskbarHide = false;
-            appWindow.setSkipTaskbar(false);
-            appWindow.hide();
-        });
+        document.getElementById("titlebar-close")?.removeEventListener("click", handleCloseClick);
+        document.getElementById("titlebar-minimize")?.removeEventListener("click", handleMinimizeClick);
         document.getElementById("titlebar-resize")?.removeEventListener("click", listenerResize);
         document.getElementById("titlebar-hide")?.removeEventListener("dblclick", listenerHideFromTaskbar);
         window.removeEventListener("keydown", listenerTabKeyDown);
@@ -164,6 +148,37 @@
             document.getElementById("titlebar-test")?.removeEventListener("dblclick", testHandler);
             testHandler = null;
         }
+    }
+
+    // + 닫기 버튼 핸들러
+    async function handleCloseClick() {
+        const behavior = userSettings.close_button_behavior;
+        if (behavior === "tray") {
+            // * 트레이로 최소화
+            isTaskbarHide = false;
+            appWindow.setSkipTaskbar(false);
+            appWindow.hide();
+        } else if (behavior === "exit") {
+            // * 프로그램 종료
+            await invoke("exit_app");
+        } else if (behavior === "ask") {
+            // * 매번 대화상자 표시
+            const shouldExit = await confirm("정말 종료하시겠습니까?", {
+                title: "종료 확인",
+                kind: "warning"
+            });
+
+            if (shouldExit) {
+                await invoke("exit_app");
+            }
+        }
+    }
+
+    // + 최소화 버튼 핸들러
+    function handleMinimizeClick() {
+        isTaskbarHide = false;
+        appWindow.setSkipTaskbar(false);
+        appWindow.minimize();
     }
 
     // + 창 투명화 기능 타이머 리셋
