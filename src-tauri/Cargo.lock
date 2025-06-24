@@ -4,11 +4,12 @@ version = 3
 
 [[package]]
 name = "LoaAssist"
-version = "1.1.0"
+version = "1.2.0"
 dependencies = [
  "dirs 4.0.0",
  "dotenv",
  "enigo",
+ "once_cell",
  "os_info",
  "reqwest 0.11.27",
  "rodio",

@@ -1,7 +1,7 @@
 import DefaultRaids from "$lib/data/default_raids.json";
 import type { RaidType } from "$lib/types";
 export const DEFAULT_RAIDS: RaidType[] = DefaultRaids;
-export const DEFAULT_RAIDS_VERSION: number = 1; // * Default Raids Table Version
+export const DEFAULT_RAIDS_VERSION: number = 2; // * Default Raids Table Version
 
 export const CREATE_DEFAULT_TABLES = `
     CREATE TABLE IF NOT EXISTS "table_versions" (

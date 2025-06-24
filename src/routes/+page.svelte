@@ -10,7 +10,7 @@
     import { TABS, UserSettingsType } from "$lib/types";
     import setWindowPosition from "$lib/utils/docking";
     import { invoke } from "$lib/utils/invoke";
-    import { updateCheckDialog } from "$lib/utils/utils";
+    import { checkUpdateUnified } from "$lib/utils/utils";
 
     const appWindow = getCurrentWindow();
 
@@ -53,6 +53,7 @@
             "%c‡index +page.svelte onMount",
             "color:white; font-style:bold; background-color:blue; padding:3px; border-radius:4px; font-size:12px;"
         );
+        emit("frontend-ready"); // ! 프론트 로드 완료시 Emit to Backend
 
         // * Session Storage에서 current_tab 옵션 확인
         const lastTab = sessionStorage.getItem("current_tab");
@@ -68,7 +69,7 @@
         // ? 창 이동 시마다 위치를 검사
         unlisten = await appWindow.listen("tauri://move", setWindowPosition);
 
-        emit("frontend-ready"); // ! 프론트 로드 완료시 Emit to Backend
+        checkUpdateUnified(false); // * 새로고침시 업데이트 확인 (캐시 데이터 사용)
     });
 
     onDestroy(() => {
@@ -100,8 +101,8 @@
             "color:white; font-style:bold; background-color:limeGreen; padding:3px; border-radius:4px; font-size:12px;"
         );
 
-        // ? 사용자가 자동 업데이트 확인을 허용했을 때만 실행
-        if (defaultSettings.update_check_enabled) updateCheckDialog(true);
+        // * 프로그램 시작 시 업데이트 확인 (캐시 데이터 사용)
+        if (defaultSettings.update_check_enabled) checkUpdateUnified(true, false, true);
 
         // ? 사용자가 자동 감지 기능을 허용했을 때만 실행
         if (defaultSettings.auto_detect_title) {

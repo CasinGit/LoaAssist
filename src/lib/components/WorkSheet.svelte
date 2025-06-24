@@ -37,7 +37,9 @@
         // console.log($inspect(raidsTable));
     });
 
-    onMount(async () => {});
+    onMount(async () => {
+        await loadLiveDB(true);
+    });
 
     onDestroy(() => {
         console.log(

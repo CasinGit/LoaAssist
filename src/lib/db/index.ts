@@ -63,10 +63,8 @@ export async function initializerDB() {
 }
 
 // + Default Raids Table 버전 업데이트 작업
-export async function updateDefaultRaidsTable() {
+export async function updateDefaultRaidsTable(db: Database) {
     console.log("Default Raids Table Update...");
-
-    const db = await Database.load(`sqlite:${liveDbName}.db`);
 
     try {
         await db.execute("BEGIN TRANSACTION;");
