@@ -221,31 +221,6 @@ export const getUserSettings = async () => {
 };
 getUserSettings(); // * 프로그램 실행시 User Settings 불러오기
 
-export const checkUpdate = async () => {
-    // ? 프로그램 업데이트가 있는지 확인
-    try {
-        invoke("get_update_check_result").then((result) => {
-            // console.log(result);
-            if (result.should_update) {
-                console.log("최신 버전이 존재함");
-                appStore.update((state) => ({
-                    ...state,
-                    updateExists: true
-                }));
-            } else {
-                console.log("최신 상태입니다.");
-                appStore.update((state) => ({
-                    ...state,
-                    updateExists: false
-                }));
-            }
-        });
-    } catch (err) {
-        console.error("업데이트 확인 실패:", err);
-    }
-};
-checkUpdate(); // * 프로그램을 새로고침해도 무조건 한번 실행
-
 export const setUserSettings = async (userSettings: UserSettingsType) => {
     await invoke("set_user_settings", { settings: userSettings });
 

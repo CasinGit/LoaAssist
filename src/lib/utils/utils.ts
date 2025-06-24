@@ -1,6 +1,7 @@
 import { ask, message } from "@tauri-apps/plugin-dialog";
 
 import { invoke } from "./invoke";
+import { appStore } from "../../stores/appStore";
 
 /**
  * 연이어 호출되는 함수들 중 마지막 함수(또는 제일 처음)만 호출하도록 하는 것
@@ -85,18 +86,25 @@ export async function checkWindowsVersion(): Promise<"ok" | "unsupported"> {
     // return build >= 22000 ? "ok" : "unsupported";
 }
 
-// + 프로그램 수동 업데이트 함수
-export async function updateCheckDialog(noDialog?: boolean) {
+export async function checkUpdateUnified(showDialog: boolean, forceRefresh = false, isFirstRun = false) {
+    console.log(
+        `🔍checkUpdateUnified\nshowDialog = ${showDialog}\nforceRefresh = ${forceRefresh}\nisFirstRun = ${isFirstRun}`
+    );
     try {
         invoke("pause_auto_focus"); // ? 오토 포커스 기능 정지
 
-        const result = await invoke("get_update_check_result");
-        console.log(result);
+        // 항상 Rust에서 가져오되, 내부적으로 캐시를 사용할지 여부는 Rust가 판단
+        const result = await invoke("get_update_check_result", { forceRefresh });
+        console.log("업데이트 확인 결과:", result);
 
-        if (result.should_update) {
+        appStore.update((state) => ({
+            ...state,
+            updateExists: result.should_update
+        }));
+
+        if (result.should_update && showDialog) {
             const accepted = await ask(
-                `새로운 버전(${result.latest_version})이 출시되었습니다.\n현재 버전: ${result.current_version}\n\n업데이트를 진행하지 않을 경우,\n- 새로 추가된 기능을 사용할 수 없으며\n- 변경된 기본 레이드 정보가 반영되지 않을 수 있습니다.\n\n지금 업데이트하시겠습니까?
-                    `,
+                `새로운 버전(${result.latest_version})이 출시되었습니다.\n현재 버전: ${result.current_version}\n\n업데이트를 진행하지 않을 경우,\n- 새로 추가된 기능을 사용할 수 없으며\n- 변경된 기본 레이드 정보가 반영되지 않을 수 있습니다.\n\n지금 업데이트하시겠습니까?`,
                 { title: "업데이트 확인", kind: "info" }
             );
 
@@ -104,17 +112,11 @@ export async function updateCheckDialog(noDialog?: boolean) {
                 await invoke("run_update_with_info", { info: result.info });
                 console.log("사용자가 업데이트 확정함");
             }
-        } else {
-            console.log("최신 상태입니다.");
-            if (!noDialog) {
-                await message(
-                    `✔️ 최신 상태입니다.\n현재 버전: v${result.current_version}\n최신 버전: v${result.latest_version}`,
-                    {
-                        title: "업데이트 확인",
-                        kind: "info"
-                    }
-                );
-            }
+        } else if (!result.should_update && showDialog && !isFirstRun) {
+            await message(
+                `✔️ 최신 상태입니다.\n현재 버전: v${result.current_version}\n최신 버전: v${result.latest_version}`,
+                { title: "업데이트 확인", kind: "info" }
+            );
         }
     } catch (err) {
         console.error("업데이트 확인 실패:", err);

@@ -4,7 +4,7 @@
     import { appStore } from "../../stores/appStore";
 
     import { TABS } from "$lib/types";
-    import { updateCheckDialog } from "$lib/utils/utils";
+    import { checkUpdateUnified } from "$lib/utils/utils";
 
     const {
         currentTab, // * 현재 활성화된 탭
@@ -31,7 +31,7 @@
 
     // + 프로그램 수동 업데이트 함수
     async function handleUpdateCheck() {
-        updateCheckDialog();
+        checkUpdateUnified(true, true); // * Dialog 포함 + forceRefresh
     }
 </script>
 

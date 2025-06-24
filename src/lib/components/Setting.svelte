@@ -20,7 +20,7 @@
     import { DEFAULT_RAIDS_VERSION } from "$lib/db/schema";
     import { TABS, UserSettingsType } from "$lib/types";
     import { invoke } from "$lib/utils/invoke";
-    import { updateCheckDialog } from "$lib/utils/utils";
+    import { checkUpdateUnified } from "$lib/utils/utils";
 
     let appVersion: string | null = $state(null);
 
@@ -239,7 +239,7 @@
 
     // + 프로그램 수동 업데이트 함수
     async function handleUpdateCheck() {
-        updateCheckDialog();
+        checkUpdateUnified(true, true); // * Dialog 포함 + forceRefresh
     }
 </script>
 
