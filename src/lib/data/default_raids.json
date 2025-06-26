@@ -293,7 +293,7 @@
         "raidName": "카양겔",
         "difficulty": "노말",
         "gate": "1",
-        "reward": 800,
+        "reward": 750,
         "resetType": 1
     },
     {
@@ -302,7 +302,7 @@
         "raidName": "카양겔",
         "difficulty": "노말",
         "gate": "2",
-        "reward": 1200,
+        "reward": 1100,
         "resetType": 1
     },
     {
@@ -311,7 +311,7 @@
         "raidName": "카양겔",
         "difficulty": "노말",
         "gate": "3",
-        "reward": 1600,
+        "reward": 1450,
         "resetType": 1
     },
     {
@@ -320,7 +320,7 @@
         "raidName": "카양겔",
         "difficulty": "하드",
         "gate": "1",
-        "reward": 1000,
+        "reward": 900,
         "resetType": 1
     },
     {
@@ -329,7 +329,7 @@
         "raidName": "카양겔",
         "difficulty": "하드",
         "gate": "2",
-        "reward": 1600,
+        "reward": 1400,
         "resetType": 1
     },
     {
@@ -338,7 +338,7 @@
         "raidName": "카양겔",
         "difficulty": "하드",
         "gate": "3",
-        "reward": 2200,
+        "reward": 2000,
         "resetType": 1
     },
     {
