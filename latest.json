@@ -1,6 +1,6 @@
 {
-    "version": "1.2.1",
-    "pub_date": "2025-06-26T15:56:20+09:00",
+    "version": "1.2.2",
+    "pub_date": "2025-06-26T16:20:22+09:00",
     "notes": "최근에 진행한 업데이트 내용에 누락된 부분이 있어서 수정 작업 진행",
     "bootstrapper": {
         "url": "https://github.com/CasinGit/LoaAssist/releases/latest/download/loaassist-bootstrapper.exe",
@@ -8,6 +8,6 @@
     },
     "release": {
         "url": "https://github.com/CasinGit/LoaAssist/releases/latest/download/LoaAssist.exe",
-        "sha256": "af519a84909a9d30b17989378d45c65d2abdbdf1c20555ca2d0d30103891ee17"
+        "sha256": "e59f1d93ea64195d3ca319a70d946c0c1d6368b00267428c3d8e48ee55ecb3a5"
     }
 }
