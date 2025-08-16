@@ -576,6 +576,78 @@
         "resetType": 1
     },
     {
+        "raidId": 65,
+        "level": 1700,
+        "raidName": "[4막] 아르모체",
+        "difficulty": "노말",
+        "gate": "1",
+        "reward": 12500,
+        "resetType": 1
+    },
+    {
+        "raidId": 66,
+        "level": 1700,
+        "raidName": "[4막] 아르모체",
+        "difficulty": "노말",
+        "gate": "2",
+        "reward": 20500,
+        "resetType": 1
+    },
+    {
+        "raidId": 67,
+        "level": 1720,
+        "raidName": "[4막] 아르모체",
+        "difficulty": "하드",
+        "gate": "1",
+        "reward": 15000,
+        "resetType": 1
+    },
+    {
+        "raidId": 68,
+        "level": 1720,
+        "raidName": "[4막] 아르모체",
+        "difficulty": "하드",
+        "gate": "2",
+        "reward": 27000,
+        "resetType": 1
+    },
+    {
+        "raidId": 69,
+        "level": 1710,
+        "raidName": "[종막] 카제로스",
+        "difficulty": "노말",
+        "gate": "1",
+        "reward": 14000,
+        "resetType": 1
+    },
+    {
+        "raidId": 70,
+        "level": 1710,
+        "raidName": "[종막] 카제로스",
+        "difficulty": "노말",
+        "gate": "2",
+        "reward": 26000,
+        "resetType": 1
+    },
+    {
+        "raidId": 71,
+        "level": 1730,
+        "raidName": "[종막] 카제로스",
+        "difficulty": "하드",
+        "gate": "1",
+        "reward": 17000,
+        "resetType": 1
+    },
+    {
+        "raidId": 72,
+        "level": 1730,
+        "raidName": "[종막] 카제로스",
+        "difficulty": "하드",
+        "gate": "2",
+        "reward": 35000,
+        "resetType": 1
+    },
+    {
         "raidId": 1000,
         "level": 1680,
         "raidName": "[강습] 타르칼",

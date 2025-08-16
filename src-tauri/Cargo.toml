@@ -1,6 +1,6 @@
 [package]
 name = "LoaAssist"
-version = "1.2.2" # Cargo Version은 Rust 프로젝트의 버전을 지정함
+version = "1.2.3" # Cargo Version은 Rust 프로젝트의 버전을 지정함
 description = "Lost Ark Assist"
 authors = ["Casin <kkig30@gmail.com>"]
 edition = "2021"

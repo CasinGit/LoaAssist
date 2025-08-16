@@ -1,13 +1,13 @@
 {
-    "version": "1.2.2",
-    "pub_date": "2025-06-26T16:20:22+09:00",
-    "notes": "최근에 진행한 업데이트 내용에 누락된 부분이 있어서 수정 작업 진행",
+    "version": "1.2.3",
+    "pub_date": "2025-08-17T05:13:11+09:00",
+    "notes": "발키리 클래스 추가 & 8월 20일 업데이트 4막, 종막 데이터 추가",
     "bootstrapper": {
         "url": "https://github.com/CasinGit/LoaAssist/releases/latest/download/loaassist-bootstrapper.exe",
         "sha256": "ee243417cf13d3a7e4654cf6b8b0480d6659927969f71ec382ec9898993434d6"
     },
     "release": {
         "url": "https://github.com/CasinGit/LoaAssist/releases/latest/download/LoaAssist.exe",
-        "sha256": "e59f1d93ea64195d3ca319a70d946c0c1d6368b00267428c3d8e48ee55ecb3a5"
+        "sha256": "039bd5442c8205c6b50af612793f598a1868280766e52d6a330442ecd9516e8e"
     }
 }
