@@ -88,7 +88,16 @@
                 on:change={(e) => handleOnChange(e, item)}
             />
             {#if userSettings.class_image}
-                <img class="mr-0.5 size-4" src={`/images/classes/${ClassType[item.class as any]}.svg`} alt="class" />
+                <img
+                    class="mr-0.5 size-4"
+                    src={`/images/classes/${ClassType[item.class as any]}.svg`}
+                    alt="class"
+                    onerror={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        target.src = `/images/classes/${ClassType[item.class as any]}.webp`;
+                    }}
+                    style="filter: brightness(0) invert(0);"
+                />
             {/if}
             <p class={`text-${item.color}-500 text-shadow mr-1`}>{item.charName}</p>
             <p class="mr-1 text-black">{item.raidName} {item.difficulty}</p>
