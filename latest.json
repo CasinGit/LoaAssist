@@ -1,13 +1,13 @@
 {
-    "version": "1.2.3",
-    "pub_date": "2025-08-17T05:13:11+09:00",
-    "notes": "발키리 클래스 추가 & 8월 20일 업데이트 4막, 종막 데이터 추가",
+    "version": "1.2.4",
+    "pub_date": "2025-10-21T20:35:41+09:00",
+    "notes": "DB 테이블 초기화 작업이 실행되지 않던 현상 핫픽스 진행",
     "bootstrapper": {
         "url": "https://github.com/CasinGit/LoaAssist/releases/latest/download/loaassist-bootstrapper.exe",
         "sha256": "ee243417cf13d3a7e4654cf6b8b0480d6659927969f71ec382ec9898993434d6"
     },
     "release": {
         "url": "https://github.com/CasinGit/LoaAssist/releases/latest/download/LoaAssist.exe",
-        "sha256": "039bd5442c8205c6b50af612793f598a1868280766e52d6a330442ecd9516e8e"
+        "sha256": "9c44e9e0d6bf4bd7f420bb6fc82b9e837bf57b9cec23c724693f6024b9433258"
     }
 }

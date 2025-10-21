@@ -48,20 +48,20 @@
 
         try {
             remainingRaidsTable = await db.select(`
-        SELECT
-            id, complete,
-            COALESCE(default_raids.raidId, group_raids.raidId) AS raidId,
-            COALESCE(default_raids.raidName, group_raids.raidName) AS raidName,
-            COALESCE(default_raids.difficulty, group_raids.difficulty) AS difficulty,
-            COALESCE(default_raids.gate, group_raids.gate) AS gate,
-            COUNT(*) as count
-        FROM live_raids
-            LEFT OUTER JOIN default_raids ON live_raids.raidId = default_raids.raidId
-            LEFT OUTER JOIN group_raids ON live_raids.raidId = group_raids.raidId
-        WHERE complete = 0
-        GROUP BY default_raids.raidId, group_raids.raidId
-        ORDER BY count DESC;
-    `);
+                SELECT
+                    id, complete,
+                    COALESCE(default_raids.raidId, group_raids.raidId) AS raidId,
+                    COALESCE(default_raids.raidName, group_raids.raidName) AS raidName,
+                    COALESCE(default_raids.difficulty, group_raids.difficulty) AS difficulty,
+                    COALESCE(default_raids.gate, group_raids.gate) AS gate,
+                    COUNT(*) as count
+                FROM live_raids
+                    LEFT OUTER JOIN default_raids ON live_raids.raidId = default_raids.raidId
+                    LEFT OUTER JOIN group_raids ON live_raids.raidId = group_raids.raidId
+                WHERE complete = 0
+                GROUP BY default_raids.raidId, group_raids.raidId
+                ORDER BY count DESC;
+            `);
         } catch (error) {
             console.error("Transaction failed:", error);
         } finally {

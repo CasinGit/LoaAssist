@@ -61,7 +61,7 @@ export const loadLiveDB = async (skip?: boolean) => {
         "color:white; font-style:bold; background-color:limeGreen; padding:3px; border-radius:4px; font-size:12px;"
     );
 
-    if (!skip) await initializerDB(); // * DataBase Initializer
+    // if (!skip) await initializerDB(); // * DataBase Initializer
 
     let raidsTable: ExtendsRaidType[] = [];
 
