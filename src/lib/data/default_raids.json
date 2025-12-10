@@ -401,7 +401,7 @@
         "raidName": "[서막] 에키드나",
         "difficulty": "노말",
         "gate": "1",
-        "reward": 2300,
+        "reward": 1900,
         "resetType": 1
     },
     {
@@ -410,7 +410,7 @@
         "raidName": "[서막] 에키드나",
         "difficulty": "노말",
         "gate": "2",
-        "reward": 5000,
+        "reward": 4200,
         "resetType": 1
     },
     {
@@ -419,7 +419,7 @@
         "raidName": "[서막] 에키드나",
         "difficulty": "하드",
         "gate": "1",
-        "reward": 2800,
+        "reward": 2200,
         "resetType": 1
     },
     {
@@ -428,7 +428,7 @@
         "raidName": "[서막] 에키드나",
         "difficulty": "하드",
         "gate": "2",
-        "reward": 6000,
+        "reward": 5000,
         "resetType": 1
     },
     {
@@ -437,7 +437,7 @@
         "raidName": "[1막] 에기르",
         "difficulty": "노말",
         "gate": "1",
-        "reward": 4750,
+        "reward": 3500,
         "resetType": 1
     },
     {
@@ -446,7 +446,7 @@
         "raidName": "[1막] 에기르",
         "difficulty": "노말",
         "gate": "2",
-        "reward": 10750,
+        "reward": 8000,
         "resetType": 1
     },
     {
@@ -455,7 +455,7 @@
         "raidName": "[1막] 에기르",
         "difficulty": "하드",
         "gate": "1",
-        "reward": 8000,
+        "reward": 5500,
         "resetType": 1
     },
     {
@@ -464,7 +464,7 @@
         "raidName": "[1막] 에기르",
         "difficulty": "하드",
         "gate": "2",
-        "reward": 16500,
+        "reward": 12500,
         "resetType": 1
     },
     {
@@ -473,7 +473,7 @@
         "raidName": "[2막] 아브렐슈드",
         "difficulty": "노말",
         "gate": "1",
-        "reward": 7250,
+        "reward": 5500,
         "resetType": 1
     },
     {
@@ -482,7 +482,7 @@
         "raidName": "[2막] 아브렐슈드",
         "difficulty": "노말",
         "gate": "2",
-        "reward": 14250,
+        "reward": 11000,
         "resetType": 1
     },
     {
@@ -491,7 +491,7 @@
         "raidName": "[2막] 아브렐슈드",
         "difficulty": "하드",
         "gate": "1",
-        "reward": 10000,
+        "reward": 7500,
         "resetType": 1
     },
     {
@@ -500,7 +500,7 @@
         "raidName": "[2막] 아브렐슈드",
         "difficulty": "하드",
         "gate": "2",
-        "reward": 20500,
+        "reward": 15500,
         "resetType": 1
     },
     {
@@ -509,7 +509,7 @@
         "raidName": "베히모스",
         "difficulty": "노말",
         "gate": "1",
-        "reward": 2800,
+        "reward": 2200,
         "resetType": 1
     },
     {
@@ -518,7 +518,7 @@
         "raidName": "베히모스",
         "difficulty": "노말",
         "gate": "2",
-        "reward": 6000,
+        "reward": 5000,
         "resetType": 1
     },
     {
@@ -527,7 +527,7 @@
         "raidName": "[3막] 모르둠",
         "difficulty": "노말",
         "gate": "1",
-        "reward": 6000,
+        "reward": 4000,
         "resetType": 1
     },
     {
@@ -536,7 +536,7 @@
         "raidName": "[3막] 모르둠",
         "difficulty": "노말",
         "gate": "2",
-        "reward": 9500,
+        "reward": 7000,
         "resetType": 1
     },
     {
@@ -545,7 +545,7 @@
         "raidName": "[3막] 모르둠",
         "difficulty": "노말",
         "gate": "3",
-        "reward": 12500,
+        "reward": 10000,
         "resetType": 1
     },
     {
@@ -554,7 +554,7 @@
         "raidName": "[3막] 모르둠",
         "difficulty": "하드",
         "gate": "1",
-        "reward": 7000,
+        "reward": 5000,
         "resetType": 1
     },
     {
@@ -563,7 +563,7 @@
         "raidName": "[3막] 모르둠",
         "difficulty": "하드",
         "gate": "2",
-        "reward": 11000,
+        "reward": 8000,
         "resetType": 1
     },
     {
@@ -572,7 +572,7 @@
         "raidName": "[3막] 모르둠",
         "difficulty": "하드",
         "gate": "3",
-        "reward": 20000,
+        "reward": 14000,
         "resetType": 1
     },
     {
@@ -645,6 +645,60 @@
         "difficulty": "하드",
         "gate": "2",
         "reward": 35000,
+        "resetType": 1
+    },
+    {
+        "raidId": 73,
+        "level": 1710,
+        "raidName": "[그림자] 세르카",
+        "difficulty": "노말",
+        "gate": "1",
+        "reward": 14000,
+        "resetType": 1
+    },
+    {
+        "raidId": 74,
+        "level": 1710,
+        "raidName": "[그림자] 세르카",
+        "difficulty": "노말",
+        "gate": "2",
+        "reward": 21000,
+        "resetType": 1
+    },
+    {
+        "raidId": 75,
+        "level": 1730,
+        "raidName": "[그림자] 세르카",
+        "difficulty": "하드",
+        "gate": "1",
+        "reward": 17500,
+        "resetType": 1
+    },
+    {
+        "raidId": 76,
+        "level": 1730,
+        "raidName": "[그림자] 세르카",
+        "difficulty": "하드",
+        "gate": "2",
+        "reward": 26500,
+        "resetType": 1
+    },
+    {
+        "raidId": 77,
+        "level": 1740,
+        "raidName": "[그림자] 세르카",
+        "difficulty": "나메",
+        "gate": "1",
+        "reward": 21000,
+        "resetType": 1
+    },
+    {
+        "raidId": 78,
+        "level": 1740,
+        "raidName": "[그림자] 세르카",
+        "difficulty": "나메",
+        "gate": "2",
+        "reward": 33000,
         "resetType": 1
     },
     {

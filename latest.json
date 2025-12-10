@@ -1,13 +1,13 @@
 {
-    "version": "1.2.4",
-    "pub_date": "2025-10-21T20:35:41+09:00",
-    "notes": "DB 테이블 초기화 작업이 실행되지 않던 현상 핫픽스 진행",
+    "version": "1.2.5",
+    "pub_date": "2025-12-10T11:43:54+09:00",
+    "notes": "12월 10일 업데이트 가디언나이트 클래스 추가, 골드 너프 적용 및 그림자 레이드 데이터 추가",
     "bootstrapper": {
         "url": "https://github.com/CasinGit/LoaAssist/releases/latest/download/loaassist-bootstrapper.exe",
         "sha256": "ee243417cf13d3a7e4654cf6b8b0480d6659927969f71ec382ec9898993434d6"
     },
     "release": {
         "url": "https://github.com/CasinGit/LoaAssist/releases/latest/download/LoaAssist.exe",
-        "sha256": "9c44e9e0d6bf4bd7f420bb6fc82b9e837bf57b9cec23c724693f6024b9433258"
+        "sha256": "767ae40bc8b777357062ebe72c9f22de14194339476cdf2414c5fa69e49cdb4f"
     }
 }
