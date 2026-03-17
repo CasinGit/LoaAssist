@@ -2,7 +2,7 @@
     import { message } from "@tauri-apps/plugin-dialog";
     import Database from "@tauri-apps/plugin-sql";
     import { Checkbox } from "flowbite-svelte";
-    import { CloseOutline, ExclamationCircleOutline } from "flowbite-svelte-icons";
+    import { CloseOutline } from "flowbite-svelte-icons";
     import { onDestroy, onMount } from "svelte";
 
     import { liveDbName } from "../../../stores/appStore";
@@ -128,15 +128,12 @@
         try {
             // * 체크된 항목 삽입
             await db.execute("BEGIN TRANSACTION");
-            await db.execute(`DELETE FROM group_raids_map WHERE groupId = $1`, [item.id]);
+            await db.execute(`DELETE FROM group_raids_map WHERE groupId = ?`, [item.id]);
 
             for (const raid of defaultRaids) {
                 if (!raid.checked) continue;
 
-                await db.execute(`INSERT INTO group_raids_map (groupId, raidId) VALUES ($1, $2)`, [
-                    item.id,
-                    raid.raidId
-                ]);
+                await db.execute(`INSERT INTO group_raids_map (groupId, raidId) VALUES (?, ?)`, [item.id, raid.raidId]);
             }
 
             await db.execute("COMMIT");
@@ -170,8 +167,8 @@
         try {
             // * 그룹 레이드, 체크 항목 삭제
             await db.execute("BEGIN TRANSACTION");
-            await db.execute(`DELETE FROM group_raids_map WHERE groupId = $1`, [item.id]);
-            await db.execute(`DELETE FROM group_raids WHERE raidId = $1`, [item.id]);
+            await db.execute(`DELETE FROM group_raids_map WHERE groupId = ?`, [item.id]);
+            await db.execute(`DELETE FROM group_raids WHERE raidId = ?`, [item.id]);
             await db.execute("COMMIT");
             console.log("Transaction committed successfully.");
         } catch (error) {

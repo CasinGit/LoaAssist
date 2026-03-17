@@ -17,7 +17,7 @@
         closeWorkResetModal
     } from "../../stores/appStore";
 
-    import { DEFAULT_RAIDS_VERSION } from "$lib/db/schema";
+    import { CURRENT_RAIDS_VERSION, DB_NOT_EXIST } from "$lib/db";
     import { TABS, UserSettingsType } from "$lib/types";
     import { invoke } from "$lib/utils/invoke";
     import { checkUpdateUnified } from "$lib/utils/utils";
@@ -183,7 +183,9 @@
             sql_string = `UPDATE live_raids SET complete = CASE WHEN resetType = 1 THEN 0 ELSE complete END`;
         }
 
+        if (DB_NOT_EXIST) return console.error("DB does not exist");
         const db = await Database.load(`sqlite:${liveDbName}.db`);
+
         try {
             await db.execute(sql_string);
             await loadLiveDB();
@@ -247,7 +249,7 @@
     <div class="flex flex-col gap-0.5 text-sm">
         <Badge class="w-fit cursor-default px-1.5" border color="dark">Program Version : {appVersion}</Badge>
         <Badge class="w-fit cursor-default px-1.5" border color="dark"
-            >Activated DB : {liveDbName} (Default Raids Table V.{DEFAULT_RAIDS_VERSION})</Badge
+            >Activated DB : {liveDbName} (Current Raids Table V.{CURRENT_RAIDS_VERSION})</Badge
         >
     </div>
 
@@ -396,7 +398,9 @@
     <div class="flex gap-1 text-sm">
         <button
             class="group relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-teal-300 to-lime-300 p-0.5 group-hover:from-teal-300 group-hover:to-lime-300"
-            onclick={handleWorkSetting}
+            onclick={() => {
+                if (!DB_NOT_EXIST) handleWorkSetting();
+            }}
         >
             <span
                 class="relative w-full rounded-md bg-white px-2.5 py-2 text-sm font-semibold text-black transition-all duration-75 ease-in group-hover:bg-transparent dark:bg-gray-900 group-hover:dark:bg-transparent"
@@ -406,7 +410,9 @@
         </button>
         <button
             class="group relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-teal-300 to-lime-300 p-0.5 group-hover:from-teal-300 group-hover:to-lime-300"
-            onclick={openWorkResetModal}
+            onclick={() => {
+                if (!DB_NOT_EXIST) openWorkResetModal();
+            }}
         >
             <span
                 class="relative w-full rounded-md bg-white px-2.5 py-2 text-sm font-semibold text-black transition-all duration-75 ease-in group-hover:bg-transparent dark:bg-gray-900 group-hover:dark:bg-transparent"

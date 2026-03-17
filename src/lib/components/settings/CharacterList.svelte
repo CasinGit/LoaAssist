@@ -81,7 +81,7 @@
                 item.priority = index;
 
                 await db.execute(
-                    "INSERT INTO characters (charId, priority, charName, class, color) VALUES ($1, $2, $3, $4, $5)",
+                    "INSERT INTO characters (charId, priority, charName, class, color) VALUES (?, ?, ?, ?, ?)",
                     [item.charId, item.priority, item.charName, item.class, item.color]
                 );
                 index++;

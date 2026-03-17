@@ -2,9 +2,8 @@ import Database from "@tauri-apps/plugin-sql";
 import { cloneDeep } from "lodash-es";
 import { writable } from "svelte/store";
 
-import { initializerDB, updateDefaultRaidsTable } from "$lib/db";
-import { DEFAULT_RAIDS_VERSION } from "$lib/db/schema";
-import { UserSettingsType, type ExtendsRaidType, type TableVersionType } from "$lib/types";
+import { DB_NOT_EXIST } from "$lib/db";
+import { UserSettingsType, type ExtendsRaidType } from "$lib/types";
 import { invoke } from "$lib/utils/invoke";
 
 // ? 프로그램 모드에 따라서 사용 DB 달라짐
@@ -55,38 +54,16 @@ const initialState: AppState = {
 export const appStore = writable<AppState>(initialState);
 
 // + Optional: Create helper functions for updating state
-export const loadLiveDB = async (skip?: boolean) => {
+export const loadLiveDB = async () => {
     console.log(
         "%cReload Live DB",
         "color:white; font-style:bold; background-color:limeGreen; padding:3px; border-radius:4px; font-size:12px;"
     );
 
-    // if (!skip) await initializerDB(); // * DataBase Initializer
-
-    let raidsTable: ExtendsRaidType[] = [];
-
+    if (DB_NOT_EXIST) return console.error("DB does not exist");
     const db = await Database.load(`sqlite:${liveDbName}.db`);
 
-    // * Default Raid Table 버전 확인
-    if (!skip) {
-        try {
-            const tableVersions: TableVersionType[] = await db.select(
-                "SELECT * FROM table_versions WHERE tableName = 'default_raids'"
-            );
-            console.log(`Current Version: ${tableVersions[0].version}\nProgram Version: ${DEFAULT_RAIDS_VERSION}`);
-
-            if (tableVersions[0].version < DEFAULT_RAIDS_VERSION) {
-                // ? Default Raid Version이 현재 DB에 저장된 데이터보다 버전이 높을때
-                console.log("Default Raids Table 버전을 업데이트 합니다.");
-                await updateDefaultRaidsTable(db);
-            } else {
-                // ? Default Raid Version이 현재 DB에 저장된 데이터랑 같거나 낮을때
-                console.log("Default Raids Table 버전을 업데이트 하지 않음.");
-            }
-        } catch (error) {
-            console.error("Transaction failed:", error);
-        }
-    }
+    let raidsTable: ExtendsRaidType[] = [];
 
     try {
         // ? live_raids 테이블에 등록되어있는 숙제표 기준으로 Table Join
