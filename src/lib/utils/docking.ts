@@ -14,7 +14,7 @@ async function setWindowPosition() {
     debounceInvoke(x, y);
 }
 
-let timeout: number | undefined;
+let timeout: ReturnType<typeof setTimeout>;
 
 // + Debounce Invoke 실행
 const debounceInvoke = (x: number, y: number) => {

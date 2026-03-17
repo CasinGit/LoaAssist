@@ -8,6 +8,7 @@
 
     import { appStore, loadLiveDB, setGold } from "../../stores/appStore";
 
+    import { DB_NOT_EXIST } from "$lib/db";
     import { ClassType, UserSettingsType, type ExtendsRaidType } from "$lib/types";
     import { invoke } from "$lib/utils/invoke";
 
@@ -38,7 +39,7 @@
     });
 
     onMount(async () => {
-        await loadLiveDB(true);
+        await loadLiveDB();
     });
 
     onDestroy(() => {
@@ -53,12 +54,13 @@
     // + 숙제 체크 핸들러
     async function handleOnChange(e: any, item: ExtendsRaidType) {
         // console.log("체크 실행됨", e.target.checked, item);
-
+        if (DB_NOT_EXIST) return console.error("DB does not exist");
         const db = await Database.load(`sqlite:${liveDbName}.db`);
+
         try {
             await db.execute(`UPDATE live_raids SET complete = ? WHERE id = ?`, [Number(item.complete), item.id]);
 
-            await loadLiveDB(true);
+            await loadLiveDB();
 
             if (item.complete) {
                 const gold = await invoke("increment_gold", { value: item.reward! });

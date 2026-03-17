@@ -94,7 +94,7 @@
                 item.priority = index;
 
                 await db.execute(
-                    "INSERT INTO group_raids (raidId, priority, level, raidName, difficulty, gate, reward, resetType) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
+                    "INSERT INTO group_raids (raidId, priority, level, raidName, difficulty, gate, reward, resetType) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
                     [
                         item.raidId,
                         item.priority,

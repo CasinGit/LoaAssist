@@ -7,6 +7,7 @@
 
     import Tab from "$lib/components/Tab.svelte";
     import TitleBar from "$lib/components/TitleBar.svelte";
+    import { DB_NOT_EXIST, RAIDS_INFO_UPDATE } from "$lib/db";
     import { TABS, UserSettingsType } from "$lib/types";
     import setWindowPosition from "$lib/utils/docking";
     import { invoke } from "$lib/utils/invoke";
@@ -121,6 +122,14 @@
 
 <div class="flex flex-auto flex-col bg-neutral-800 bg-opacity-70">
     <main class="h-px flex-1 basis-auto overflow-y-auto p-1">
+        {#if DB_NOT_EXIST}
+            <div class="fixed inset-0 z-50 content-center bg-black bg-opacity-50 text-center">프로그램 사용 불가</div>
+        {/if}
+        {#if RAIDS_INFO_UPDATE}
+            <div class="fixed inset-0 z-50 content-center bg-black bg-opacity-50 text-center">
+                레이드 정보 업데이트 중
+            </div>
+        {/if}
         {#if ActiveComponent}
             <ActiveComponent />
         {/if}

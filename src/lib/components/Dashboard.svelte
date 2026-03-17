@@ -6,6 +6,7 @@
 
     import { appStore, liveDbName, loadLiveDB } from "../../stores/appStore";
 
+    import { DB_NOT_EXIST } from "$lib/db";
     import type { ExtendsRaidType } from "$lib/types";
 
     let gold: number = $state(0);
@@ -44,6 +45,7 @@
     });
 
     async function loadRemainingRaids() {
+        if (DB_NOT_EXIST) return console.error("DB does not exist");
         const db = await Database.load(`sqlite:${liveDbName}.db`);
 
         try {
