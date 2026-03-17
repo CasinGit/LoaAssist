@@ -89,7 +89,7 @@
 
             let index: number = 1;
             for (const item of groupRaidTable) {
-                if (!item.level || !item.raidName || !item.difficulty || !item.gate || !item.reward) continue;
+                if (!item.level || !item.raidName || !item.difficulty || !item.gate) continue;
 
                 item.priority = index;
 
