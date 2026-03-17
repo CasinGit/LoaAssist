@@ -90,7 +90,7 @@
                 if (item.charId === -1 || item.raidId === -1) continue;
 
                 await db.execute(
-                    `INSERT INTO live_raids (id, charId, raidType, raidId, complete, swap, resetType) VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+                    `INSERT INTO live_raids (id, charId, raidType, raidId, complete, swap, resetType) VALUES (?, ?, ?, ?, ?, ?, ?)`,
                     [index, item.charId, item.raidType, item.raidId, Number(item.complete), item.swap, item.resetType]
                 );
                 index++;

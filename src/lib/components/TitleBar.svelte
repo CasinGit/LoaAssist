@@ -43,8 +43,8 @@
 
     // * 일반적인 변수 (반응형 X)
     let isProcessing: boolean = false; // ? 창 접힘 중복 실행 방지 변수
-    let timeout: number; // ? 창 투명 상태 적용 타이머 변수
-    let editTimeout: number; // ? 자동 편집 종료 타이머 변수
+    let timeout: ReturnType<typeof setTimeout>; // ? 창 투명 상태 적용 타이머 변수
+    let editTimeout: ReturnType<typeof setTimeout>; // ? 자동 편집 종료 타이머 변수
 
     // + Subscribe to store
     const unsubscribe = appStore.subscribe((value) => {
@@ -378,7 +378,7 @@
     <div class="titlebar-button" id="titlebar-minimize">
         <MinusOutline />
     </div>
-    <div class="titlebar-button" id="titlebar-close">
+    <div class="titlebar-button z-50" id="titlebar-close">
         <CloseOutline />
     </div>
 </div>
@@ -396,6 +396,7 @@
         right: 0;
         align-items: center;
         opacity: 0.95;
+        z-index: 51;
     }
     .titlebar-button {
         display: inline-flex;

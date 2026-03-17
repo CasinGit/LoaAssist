@@ -9,7 +9,7 @@ import { appStore } from "../../stores/appStore";
  * @param {number | undefined} delay
  */
 export function debounce(callback: (arg0: any) => void, delay: number | undefined) {
-    let timeout: number | undefined;
+    let timeout: ReturnType<typeof setTimeout>;
     return (...args: any) => {
         clearTimeout(timeout);
         timeout = setTimeout(() => {
