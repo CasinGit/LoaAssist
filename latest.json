@@ -1,13 +1,13 @@
 {
-    "version": "2.0.0",
-    "pub_date": "2026-03-18T05:02:38+09:00",
-    "notes": "DB 초기화 구조 개편",
+    "version": "2.0.1",
+    "pub_date": "2026-03-18T05:49:18+09:00",
+    "notes": "그룹 레이드 생성 버그 핫픽스",
     "bootstrapper": {
         "url": "https://github.com/CasinGit/LoaAssist/releases/latest/download/loaassist-bootstrapper.exe",
         "sha256": "ee243417cf13d3a7e4654cf6b8b0480d6659927969f71ec382ec9898993434d6"
     },
     "release": {
         "url": "https://github.com/CasinGit/LoaAssist/releases/latest/download/LoaAssist.exe",
-        "sha256": "004dde55f06d703891311fbbf46497628223c7505f03d7c22da60b83a23331c3"
+        "sha256": "91cf770e1ffd4ca2d96d1f0fa11e5b670b57e66a5c46d01bb4fc3bc744f36d42"
     }
 }

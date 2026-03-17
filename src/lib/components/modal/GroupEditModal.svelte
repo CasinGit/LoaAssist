@@ -116,8 +116,8 @@
 
     // + 그룹 저장 함수
     async function handleGroupSave() {
-        if (!item.level || !item.raidName || !item.difficulty || !item.gate || !item.reward) {
-            message("레벨, 레이드명, 난이도, 관문, 골드 항목은 비워둘 수 없습니다.", {
+        if (!item.level || !item.raidName || !item.difficulty || !item.gate) {
+            message("레벨, 레이드명, 난이도, 관문은 비워둘 수 없습니다.", {
                 title: "저장 불가",
                 kind: "warning"
             });
